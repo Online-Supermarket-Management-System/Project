@@ -3,15 +3,15 @@ import Form from "react-bootstrap/Form";
 
 const TextArea = ({label, type, value, onChange}) => {
   return (
-    <div className="depth-6-frame-05">
-      <div className="depth-7-frame-06">
+    <div className="register-6--05">
+      <div className="register-7--06">
         <div className="address">{label}</div>
       </div>
       <Form.Control
         as="textarea"
         rows={3}
         placeholder={label}
-        className="depth-7-frame-14"
+        className="register-7--14"
         type={type}
         required
         value={value}

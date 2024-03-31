@@ -3,13 +3,13 @@ import Form from "react-bootstrap/Form";
 
 const InputField = ({label, type, value, onChange}) => {
   return (
-    <div className="depth-6-frame-04">
-      <div className="depth-7-frame-04">
+    <div className="register-6--04">
+      <div className="register-7--04">
         <div className="first-name">{label}</div>
       </div>
       <Form.Control
         placeholder={label}
-        className="depth-7-frame-12"
+        className="register-7--12"
         type={type}
         required
         value = {value}

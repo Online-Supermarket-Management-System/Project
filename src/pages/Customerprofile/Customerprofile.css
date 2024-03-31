@@ -408,7 +408,7 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    justify-content: flex-start;
+    justify-content: center;
   }
   .div26 {
     align-self: stretch;
@@ -446,7 +446,7 @@
   .div31,
   .div32 {
     width: 232px;
-    height: 56px;
+    height: 40px;
   }
   .div32 {
     border-radius: 12px;
@@ -489,7 +489,7 @@
   .div35,
   .div36 {
     width: 232px;
-    height: 56px;
+    height: 40px;
   }
   .div36 {
     border-radius: 12px;
@@ -523,7 +523,7 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: center;
     padding: 12px 16px;
     box-sizing: border-box;
   }
@@ -569,7 +569,7 @@
   .div42,
   .div43 {
     width: 480px;
-    height: 56px;
+    height: 40px;
     display: flex;
     flex-direction: row;
   }
@@ -588,7 +588,7 @@
   .div39,
   .div42 {
     align-items: center;
-    justify-content: flex-start;
+    justify-content: center;
   }
   .div37,
   .div38,
@@ -663,7 +663,7 @@
   .div52 {
     width: 480px;
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
   }
   .div52 {
     height: 56px;
@@ -744,7 +744,7 @@
   .div61 {
     width: 480px;
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
   }
   .div61 {
     height: 56px;
@@ -830,7 +830,7 @@
     justify-content: flex-start;
   }
   .div67 {
-    height: 56px;
+    height: 40px;
     flex-direction: row;
     align-items: center;
     color: #4f964f;
@@ -926,7 +926,7 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: center;
     padding: 12px 16px;
     box-sizing: border-box;
   }
@@ -973,7 +973,7 @@
     width: 921px;
     height: 64px;
     align-items: flex-start;
-    justify-content: flex-start;
+    justify-content: center;
     padding: 12px 16px;
     font-size: 14px;
   }
@@ -988,7 +988,7 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    justify-content: flex-start;
+    justify-content: center;
   }
   .div80 {
     align-self: stretch;
@@ -1060,7 +1060,7 @@
   .div85 {
     width: 480px;
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
   }
   .div85 {
     height: 56px;
@@ -1141,7 +1141,7 @@
   .div94 {
     width: 480px;
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
   }
   .div94 {
     height: 56px;
@@ -1222,7 +1222,7 @@
   .div99 {
     width: 480px;
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
   }
   .div103 {
     height: 56px;
@@ -1291,7 +1291,7 @@
   .div108 {
     width: 921px;
     height: 64px;
-    justify-content: flex-start;
+    justify-content: center;
     padding: 12px 16px;
     font-size: 14px;
   }
@@ -1356,3 +1356,9 @@
     font-family: "Public Sans";
   }
   
+.form-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
