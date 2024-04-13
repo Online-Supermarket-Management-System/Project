@@ -2,6 +2,7 @@ import Home from "../pages/Home/Home"
 import Login from "../pages/login/Login"
 import Register from "../pages/register/Register"
 import CustomerProfile from "../pages/Customerprofile/Customerprofile"
+import AdminHomePage from "../pages/adminhome/adminhome"
 
 const routes = {
     data: [
@@ -29,6 +30,12 @@ const routes = {
             component: <CustomerProfile/>,
             type: "",
          },
+         {
+            name: "adminhome",
+            path: "/adminhome",
+            component: <AdminHomePage/>,
+            type: "",
+         }
     ]
 }
 
