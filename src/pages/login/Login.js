@@ -4,12 +4,14 @@ import "./Login.css";
 import Form from "react-bootstrap/Form";
 import Button from 'react-bootstrap/Button';
 
+import {login} from '../../api/auth'
+
 const Login = () => {
   const [validated, setValidated] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async(event) => {
     const form = event.currentTarget;
     
     if (form.checkValidity() === false) {
@@ -18,6 +20,21 @@ const Login = () => {
     }
 
     setValidated(true);
+
+    const data = {
+      email: email,
+      password: password
+    }; 
+
+    console.log("data", data);
+
+    try {
+      const response = await login(data);
+      console.log("response", response);
+      window.location.href = "/";
+    } catch (error) { 
+      console.log("error", error);
+    }
   };
 
   const handleEmailChange = (event) => {
