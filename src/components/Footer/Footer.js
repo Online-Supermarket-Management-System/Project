@@ -1,6 +1,6 @@
 import "./Footer.css";
 import Button from 'react-bootstrap/Button';
-
+import { Link } from 'react-router-dom';
 
 
 import iconfacebook from "../../Icons/iconfacebook.png"
@@ -114,7 +114,9 @@ const Footer = () => {
               <div className="download-app">Are you here to access the admin features?  </div>
               <div className="save-3-with-app-new-user-only-parent">
                 <div className="save-3-with">
-                <Button variant="outline-light">Access to the Admin panel</Button>{' '}
+                <a href="/adminLogin">
+                <Button variant="outline-light">Access to the Admin panel </Button>{' '}
+                </a>
                 </div>
 
                 <div className="proximity-prober">

@@ -180,6 +180,7 @@
   position: relative;
   overflow: hidden;
   flex-shrink: 0;
+  cursor: pointer;
 }
 .depth-6-frame-021 {
   display: flex;
@@ -195,6 +196,7 @@
   align-items: center;
   justify-content: center;
   padding: 10px;
+  cursor: pointer;
 }
 .depth-2-frame-2,
 .depth-3-frame-1,
@@ -232,6 +234,8 @@
   color: #0d1c0d;
   font-family: "Public Sans";
   width: 100%;
+  background-color: #FFFFFF;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 @media screen and (max-width: 1000px) {
   .depth-3-frame-1 {
