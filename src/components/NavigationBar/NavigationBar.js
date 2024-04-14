@@ -1,5 +1,6 @@
 import "./NavigationBar.css";
 import iconuser from "../../Icons/icons8-user-circle-24.png"
+import NorthwayTitle from "../../Icons/NorthWay.jpg";
 
 const NavigationBar = () => {
   const navigateToProfile = () => {
@@ -15,7 +16,7 @@ const NavigationBar = () => {
                 className="vector-0"
                 loading="lazy"
                 alt=""
-                src="Northway title.jpg"
+                src={NorthwayTitle}
               />
               <div className="depth-7-frame-015" />
             </div>
