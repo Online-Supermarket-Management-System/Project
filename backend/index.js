@@ -34,7 +34,7 @@ const orderschema = mongoose.Schema(
   }
 );
 
-const ordermodel = mongoose.model("Admin", orderschema);
+const ordermodel = mongoose.model("customers", orderschema);
 
 app.get("/", async (req, res) => {
   const data = await ordermodel.find({});
