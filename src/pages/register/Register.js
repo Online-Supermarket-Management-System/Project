@@ -1,19 +1,21 @@
 import React, { useState } from "react";
 import "./Register.css";
 
-import Form from 'react-bootstrap/Form';
+import Form from "react-bootstrap/Form";
 import InputField from "../../components/Inputs/InputField";
 import TextArea from "../../components/Inputs/TextArea";
 import InputSelect from "../../components/Inputs/InputSelect";
 
-import Button from 'react-bootstrap/Button';
+import Button from "react-bootstrap/Button";
+
+import { register } from "../../api/auth";
 
 const RegistrationCopy = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [address, setAddress] = useState("");
   const [postalCode, setPostalCode] = useState("");
-  const [city, setCity] = useState("");
+  const [city, setCity] = useState("Jaffna");
   const [contactNumber, setContactNumber] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -23,45 +25,45 @@ const RegistrationCopy = () => {
 
   const handleFirstNameChange = (event) => {
     setFirstName(event.target.value);
-  }
+  };
 
   const handleLastNameChange = (event) => {
     setLastName(event.target.value);
-  }
+  };
 
   const handleAddressChange = (event) => {
     setAddress(event.target.value);
-  }
+  };
 
   const handlePostalCodeChange = (event) => {
     setPostalCode(event.target.value);
-  }
+  };
 
   const handleCityChange = (event) => {
     setCity(event.target.value);
-  }
+  };
 
   const handleContactNumberChange = (event) => {
     setContactNumber(event.target.value);
-  }
+  };
 
-  const handleEmailChange = (event) => {  
+  const handleEmailChange = (event) => {
     setEmail(event.target.value);
-  }
+  };
 
   const handlePasswordChange = (event) => {
     setPassword(event.target.value);
-  }
+  };
 
-  const handleConfirmPasswordChange = (event) => { 
+  const handleConfirmPasswordChange = (event) => {
     setConfirmPassword(event.target.value);
-  }
+  };
 
   const handleCheckboxChange = (event) => {
     setCh(event.target.checked);
-  }
+  };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async(event) => {
     const form = event.currentTarget;
 
     if (form.checkValidity() === false) {
@@ -70,7 +72,27 @@ const RegistrationCopy = () => {
     }
 
     setValidated(true);
-  }
+
+    const data = {
+      first_name: firstName,
+      last_name: lastName,
+      address: address,
+      postal_code: postalCode,
+      city: city,
+      contact_number: contactNumber,
+      email: email,
+      password: password,
+    };
+
+    console.log("data", data);
+
+    try {
+      const response = await register(data);
+      console.log("response", response);
+    } catch (error) { 
+      console.log("error", error);
+    }
+  };
 
   // const renderInputField = (label, type) => {
   //   return (
@@ -115,70 +137,113 @@ const RegistrationCopy = () => {
 
   return (
     <Form noValidate validated={validated} onSubmit={handleSubmit}>
-    <div className="registration-copy">
-      <div className="logic-gate"></div>
-      <main className="instance-parent">
-        <img className="-child" loading="lazy" alt="" src="/line-3.svg" />
-        <section className="-wrapper">
-          <div className="-parent">
-            <div className="image-1-parent">
-              <img
-                className="image-1-icon"
-                loading="lazy"
-                alt=""
-                src="home page.jpg"
-              />
-              <div className="welcome-to-northway-supermart-wrapper">
-                <h1 className="welcome-to-northway">
-                  Welcome to Northway Supermart
-                </h1>
-              </div>
-            </div>
-            <div className="-group">
-              <div className="-container">
-                <div className="register-6--0-parent">
-                  <InputField label={"First Name"} type={"text"} value={firstName} onChange={handleFirstNameChange}/>
-                  <InputField label={"Last Name"} type={"text"} value={lastName} onChange={handleLastNameChange}/>
+      <div className="registration-copy">
+        <div className="logic-gate"></div>
+        <main className="instance-parent">
+          <img className="-child" loading="lazy" alt="" src="/line-3.svg" />
+          <section className="-wrapper">
+            <div className="-parent">
+              <div className="image-1-parent">
+                <img
+                  className="image-1-icon"
+                  loading="lazy"
+                  alt=""
+                  src="home page.jpg"
+                />
+                <div className="welcome-to-northway-supermart-wrapper">
+                  <h1 className="welcome-to-northway">
+                    Welcome to Northway Supermart
+                  </h1>
                 </div>
               </div>
-              <div className="register-4--31">
-                <div className="register-5--07">
-                  <TextArea label = {"Address"} type={"text"} value={address} onChange={handleAddressChange}/>
-                </div>
-              </div>
-              <div className="-div">
-                <div className="register-6--0-group">
-                  <InputField label={"Postal Code"} type={"text"} value={postalCode} onChange={handlePostalCodeChange}/>
-                  <InputSelect label={"City"} options={["Jaffna"]} value={city} onChange={handleCityChange}/>
-                  {/* <InputSelect label={"State"} options={["Northern"]}/> */}
-                </div>
-              </div>
-              <div className="register-4--5-parent">
-                <div className="register-4--51">
-                  <div className="register-5--08">
-                    <InputField label={"Contact Number"} type={"number"} value={contactNumber} onChange={handleContactNumberChange}/>
+              <div className="-group">
+                <div className="-container">
+                  <div className="register-6--0-parent">
+                    <InputField
+                      label={"First Name"}
+                      type={"text"}
+                      value={firstName}
+                      onChange={handleFirstNameChange}
+                    />
+                    <InputField
+                      label={"Last Name"}
+                      type={"text"}
+                      value={lastName}
+                      onChange={handleLastNameChange}
+                    />
                   </div>
                 </div>
-                <div className="register-4--61">
-                  <div className="register-5--09">
-                    <InputField label={"Email"} type={"email"} value={email} onChange={handleEmailChange}/>
+                <div className="register-4--31">
+                  <div className="register-5--07">
+                    <TextArea
+                      label={"Address"}
+                      type={"text"}
+                      value={address}
+                      onChange={handleAddressChange}
+                    />
                   </div>
                 </div>
-                <div className="register-4--7">
-                  <div className="register-5--010">
-                    <InputField label={"Password"} type={"password"} value={[password]} onChange={handlePasswordChange}/>
+                <div className="-div">
+                  <div className="register-6--0-group">
+                    <InputField
+                      label={"Postal Code"}
+                      type={"text"}
+                      value={postalCode}
+                      onChange={handlePostalCodeChange}
+                    />
+                    <InputSelect
+                      label={"City"}
+                      options={["Jaffna"]}
+                      value={city}
+                      onChange={handleCityChange}
+                    />
+                    {/* <InputSelect label={"State"} options={["Northern"]}/> */}
                   </div>
                 </div>
-                <div className="register-4--8">
-                  <div className="register-5--011">
-                    <InputField label={"Confirm Password"} type={"password"} value={confirmPassword} onChange={handleConfirmPasswordChange}/>
+                <div className="register-4--5-parent">
+                  <div className="register-4--51">
+                    <div className="register-5--08">
+                      <InputField
+                        label={"Contact Number"}
+                        type={"number"}
+                        value={contactNumber}
+                        onChange={handleContactNumberChange}
+                      />
+                    </div>
+                  </div>
+                  <div className="register-4--61">
+                    <div className="register-5--09">
+                      <InputField
+                        label={"Email"}
+                        type={"email"}
+                        value={email}
+                        onChange={handleEmailChange}
+                      />
+                    </div>
+                  </div>
+                  <div className="register-4--7">
+                    <div className="register-5--010">
+                      <InputField
+                        label={"Password"}
+                        type={"password"}
+                        value={[password]}
+                        onChange={handlePasswordChange}
+                      />
+                    </div>
+                  </div>
+                  <div className="register-4--8">
+                    <div className="register-5--011">
+                      <InputField
+                        label={"Confirm Password"}
+                        type={"password"}
+                        value={confirmPassword}
+                        onChange={handleConfirmPasswordChange}
+                      />
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div
-                className="register-5--0-wrapper"
-              >
-                {/* <div className="register-5--012">
+                <div className="register-5--0-wrapper">
+                  {/* <div className="register-5--012">
                   <div className="register-6--011">
                     <div className="register-7--013">
                       <div className="i-agree-to" >
@@ -188,34 +253,44 @@ const RegistrationCopy = () => {
                     </div>
                   </div>
                 </div> */}
-                <Form.Check.Input type={"checkbox"} isValid style = {{marginRight: "5px"}} onChange={handleCheckboxChange} value={ch}/>
-                I agree to the Terms of Use and Privacy Policy
-              </div>
-              <div className="register-4--10-parent">
-                <div className="register-4--10">
-                  {/* <div className="register-5--013">
+                  <Form.Check.Input
+                    type={"checkbox"}
+                    isValid
+                    style={{ marginRight: "5px" }}
+                    onChange={handleCheckboxChange}
+                    value={ch}
+                  />
+                  I agree to the Terms of Use and Privacy Policy
+                </div>
+                <div className="register-4--10-parent">
+                  <div className="register-4--10">
+                    {/* <div className="register-5--013">
                     <div className="register-6--012">
                       <div className="register-7--014">
                         <b className="create-account">Create Account</b>
                       </div>
                     </div>
                   </div> */}
-                  <Button variant="outline-success" style = {{width: "100%"}} onClick={handleSubmit}>
-                    Create Account
-                  </Button>{' '}
-                </div>
-                
-                <div className="already-registered-log-in-wrapper">
-                  <div className="already-registered-log">
-                    Already registered? Log in.
+                    <Button
+                      variant="outline-success"
+                      style={{ width: "100%" }}
+                      onClick={handleSubmit}
+                    >
+                      Create Account
+                    </Button>{" "}
+                  </div>
+
+                  <div className="already-registered-log-in-wrapper">
+                    <div className="already-registered-log">
+                      Already registered? Log in.
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-        </section>
-      </main>
-    </div>
+          </section>
+        </main>
+      </div>
     </Form>
   );
 };
