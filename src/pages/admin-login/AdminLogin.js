@@ -39,9 +39,12 @@ export default class AdminLogin extends Component {
 
       if (response.status === 200) {
         if (response.token && response.approved) {
+          localStorage.setItem('role', response.role);
+          const role = localStorage.getItem("role");
+          console.log("role:", role);
           console.log("Login successful");
           toast.success("Login successful");
-          //window.location.href = "/adminhome";
+          window.location.href = "/adminhome";
 
           this.setState({
             loginEmail: "",
@@ -113,7 +116,7 @@ export default class AdminLogin extends Component {
       }
     }
 
-    this.setState({ registerValidated: true });
+    //this.setState({ registerValidated: true });
   };
 
   handleLoginEmailChange = (event) => {

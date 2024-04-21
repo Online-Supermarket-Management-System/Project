@@ -5,6 +5,8 @@ import Button from "react-bootstrap/Button";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+import { getUserRole } from "../../api/adminLogin";
+
 const SuperAdmin = () => {
   const [registrationData, setRegistrationData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
@@ -13,7 +15,28 @@ const SuperAdmin = () => {
 
   useEffect(() => {
     fetchRegistrationData();
+    getRole()
   }, []);
+
+  const getRole = async () => {
+    try {
+      const role = localStorage.getItem("role");
+      console.log("role:", role);
+
+      if (role === "SADMIN") {
+        console.log("User is a super admin");
+      } else {
+        if (role === "ADMIN") {
+          window.location.href = "/adminhome";
+        } else {
+          window.location.href = "/adminLogin";
+        }
+      }
+    } catch (error) {
+      console.error("Error fetching user role:", error);
+      toast.error("Error fetching user role");
+    }
+  };
 
   const fetchRegistrationData = async () => {
     try {
@@ -25,32 +48,35 @@ const SuperAdmin = () => {
       console.error("Error fetching registration data:", error);
     }
   };
-
+  
   const handleSearch = (query) => {
     setSearchQuery(query);
-    const filtered = registrationData.filter(user =>
-      user.empId.includes(query) ||
-      user.firstName.includes(query) ||
-      user.lastName.includes(query) ||
-      user.email.includes(query) ||
-      user.contactNumber.includes(query)
+    const filtered = registrationData.filter(
+      (user) =>
+        user.empId.includes(query) ||
+        user.firstName.includes(query) ||
+        user.lastName.includes(query) ||
+        user.email.includes(query) ||
+        user.contactNumber.includes(query)
     );
     setFilteredData(filtered);
   };
   const approveUser = async (userId) => {
     try {
-      const response = await axios.patch(`http://localhost:4000/auth/approve/${userId}`);
+      const response = await axios.patch(
+        `http://localhost:4000/auth/approve/${userId}`
+      );
       console.log("Response after approval:", response.data);
       toast.success("User successfully approved");
-  
+
       // Update the registration data and filtered data states
-      const updatedData = registrationData.map(user => {
+      const updatedData = registrationData.map((user) => {
         if (user._id === userId) {
           return { ...user, approved: true };
         }
         return user;
       });
-  
+
       // Set the updated data in state
       setRegistrationData(updatedData);
       setFilteredData(updatedData); // Ensure both states are updated
@@ -60,12 +86,13 @@ const SuperAdmin = () => {
     }
   };
 
-  
   const rejectUser = async (userId) => {
     try {
       await axios.delete(`http://localhost:4000/auth/${userId}`);
       // After successful rejection, update the local registration data by filtering out the rejected user
-      const updatedData = registrationData.filter(user => user._id !== userId);
+      const updatedData = registrationData.filter(
+        (user) => user._id !== userId
+      );
       setRegistrationData(updatedData);
       setFilteredData(updatedData); // Also update the filtered data state
       toast.success("User successfully deleted");
@@ -74,7 +101,6 @@ const SuperAdmin = () => {
       toast.error("Error deleting user");
     }
   };
-  
 
   const renderTable = (tableHeaders, rows) => {
     return (
@@ -98,21 +124,20 @@ const SuperAdmin = () => {
               <td>{row.contactNumber}</td>
               <td>
                 {!row.approved && (
-                  <Button 
-                    className="super-admin-approve" 
+                  <Button
+                    className="super-admin-approve"
                     onClick={() => approveUser(row._id)}
                   >
                     Approve
                   </Button>
                 )}
-                 &nbsp;&nbsp;&nbsp;&nbsp; 
-                 <Button 
-                  className="super-admin-reject" 
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <Button
+                  className="super-admin-reject"
                   onClick={() => rejectUser(row._id)}
                 >
                   Reject
                 </Button>
-              
               </td>
             </tr>
           ))}
@@ -123,21 +148,28 @@ const SuperAdmin = () => {
 
   return (
     <div className="super-admin-profile">
-       <ToastContainer />
-<div className="super-admin-profile-header">
+      <ToastContainer />
+      <div className="super-admin-profile-header">
         <span>Upcoming Register Requests</span>
       </div>
       <div className="search-bar">
-        <input 
-          type="text" 
-          placeholder="Search" 
-          value={searchQuery} 
-          onChange={(e) => handleSearch(e.target.value)} 
+        <input
+          type="text"
+          placeholder="Search"
+          value={searchQuery}
+          onChange={(e) => handleSearch(e.target.value)}
         />
       </div>
       {filteredData.length > 0 ? (
         renderTable(
-          ["Employee ID", "First Name", "Last Name", "Email", "Contact Number", "Action"],
+          [
+            "Employee ID",
+            "First Name",
+            "Last Name",
+            "Email",
+            "Contact Number",
+            "Action",
+          ],
           filteredData
         )
       ) : (

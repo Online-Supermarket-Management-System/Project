@@ -300,6 +300,23 @@ const deleteUser = asyncHandler(async (req, res) => {
   }
 });
 
+const getUserRole = async (req, res) => {
+  const { empId } = req.body;
+
+  // Find user by email
+  const user = await User.findOne({ empId });
+
+  if (!user) {
+    res.status(400).json({ message: "User not found" });
+    return;
+  }
+
+  // Return user's role
+  res.status(200).json({
+    role: user.role
+  });
+};
+
 module.exports = {
   registerUser,
   loginUser,
@@ -311,7 +328,8 @@ module.exports = {
   updatePassword,
   updateDocument,
   deleteUser,
-  checkEmailExists 
+  checkEmailExists,
+  getUserRole,
 };
 
 

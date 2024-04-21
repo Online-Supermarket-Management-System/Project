@@ -11,7 +11,8 @@ const {
   updateUserPassword,
   updatePassword,
   checkEmailExists ,
-  updateDocument
+  updateDocument,
+  getUserRole
 } = require("./userController");
 // const { protect } = require("../middleware/authMiddleware");
 
@@ -26,5 +27,6 @@ router.patch("/approve/:id", approveUser);
 router.get("/:id", getUserById);
 router.delete("/:id", deleteUser);
 router.get("/check-email/:email", checkEmailExists);
+router.post('/get-user-role', getUserRole);
 
 module.exports = router;
