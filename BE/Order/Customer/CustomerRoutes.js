@@ -8,7 +8,8 @@ const {
   count,
   getOrder,
   verifyEmail,
-  login
+  login,
+  getCustomer
 } = require('./Customer');
 
 router.post("/create", create);
@@ -18,5 +19,5 @@ router.get("/count", count);
 router.get("/getOrder/:id", getOrder);
 router.get("/verify-email", verifyEmail);
 router.post("/login", login);
-
+router.get("/getCustomer/:email", getCustomer);
 module.exports = router;

@@ -15,6 +15,7 @@ const orderschema = mongoose.Schema(
     email: {
       type: String,
       required: true,
+      unique: true,
       match: [/\S+@\S+\.\S+/, "Email should be valid"],
     },
     password: { type: String, required: true },

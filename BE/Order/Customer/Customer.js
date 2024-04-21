@@ -48,6 +48,20 @@ const update = async (req, res) => {
   res.send({ success: true, message: "updated successfuly", data: data });
 };
 
+const getCustomer = async (req, res) => {
+  console.log(req);
+  const email = req.params.email;
+  console.log(email);
+  const data = await ordermodel.findOne({ email });
+  console.log(data);
+
+  if (!data) {
+    return res.status(404).send({ success: false, message: "No user found with this email" });
+  }
+
+  res.send({ success: true, message: "Retrieved successfully", data: data });
+};
+
 const deleteOne = async (req, res) => {
   const id = req.params.id;
   const data = await ordermodel.deleteOne({ _id: id });
@@ -155,5 +169,6 @@ module.exports = {
   count,
   getOrder,
   verifyEmail,
-  login
+  login,
+  getCustomer
 };

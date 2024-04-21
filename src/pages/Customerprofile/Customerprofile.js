@@ -1,11 +1,93 @@
+import React, { useEffect, useState } from "react";
+
 import "./Customerprofile.css";
 
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 
-import userImg from "../../Icons/user.png";
+// import userImg from "../../Icons/user.png";
+
+import { getCustomer } from "../../api/customer";
+import { update } from "../../api/put";
 
 const CustomerProfile = () => {
+  const [firstName, setFirstName] = useState("");
+  const [LastName, setLastName] = useState("");
+  const [firstNameEdited, setFirstNameEdited] = useState("");
+  const [LastNameEdited, setLastNameEdited] = useState("");
+  const [email, setEmail] = useState("");
+  const [contactNumber, setContactNumber] = useState("");
+  const [address, setAddress] = useState("");
+  const [postalCode, setPostalCode] = useState("");
+  const [city, setCity] = useState("");
+  useEffect(() => {
+    getCustomerData();
+  }, []);
+
+  const getCustomerData = async () => {
+    try {
+      const email = "rajpragashraj30@gmail.com";
+      const response = await getCustomer(email);
+      console.log(response);
+
+      if (response.success) {
+        setFirstName(response.data.first_name);
+        setLastName(response.data.last_name);
+        setEmail(response.data.email);
+        setContactNumber(response.data.contact_number);
+        setAddress(response.data.address);
+        setPostalCode(response.data.postal_code);
+        setCity(response.data.city);
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const handleFirstNameChange = (e) => {
+    setFirstNameEdited(e.target.value);
+  };
+  const handleLastNameChange = (e) => {
+    setLastNameEdited(e.target.value);
+  };
+  const handleEmailChange = (e) => {
+    setEmail(e.target.value);
+  };
+
+  const handleContactNumberChange = (e) => {
+    setContactNumber(e.target.value);
+  };
+
+  const handleAddressChange = (e) => {
+    setAddress(e.target.value);
+  };
+
+  const handlePostalCodeChange = (e) => {
+    setPostalCode(e.target.value);
+  };
+
+  const handleCityChange = (e) => {
+    setCity(e.target.value);
+  };
+
+  const handleSubmit = async () => {
+    const dataToUpdate = {
+      firstName,
+      LastName,
+      email,
+      contactNumber,
+      address,
+      postalCode,
+      city,
+    };
+    try {
+      const response = await update(email, dataToUpdate);
+      console.log(response);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <div className="customer-profile">
       <div className="q">
@@ -19,45 +101,45 @@ const CustomerProfile = () => {
                       <div className="p">
                         <div className="h">
                           <div className="j">
-                            <div className="k">Profile</div>
+                            {/* <div className="k">Profile</div> */}
                           </div>
                         </div>
                       </div>
                       <div className="a">
                         <div className="l">
                           <div className="z">
-                            <div className="x">Orders</div>
+                            {/* <div className="x">Orders</div> */}
                           </div>
                         </div>
                       </div>
                       <div className="s">
                         <div className="c">
                           <div className="v">
-                            <div className="b">Shopping Lists</div>
+                            {/* <div className="b">Shopping Lists</div> */}
                           </div>
                         </div>
                       </div>
                       <div className="d">
                         <div className="n">
                           <div className="m">
-                            <div className="div1">Saved Items</div>
+                            {/* <div className="div1">Saved Items</div> */}
                           </div>
                         </div>
                       </div>
                       <div className="f">
                         <div className="div2">
                           <div className="div3">
-                            <div className="payment-methods">
+                            {/* <div className="payment-methods">
                               Payment Methods
-                            </div>
+                            </div> */}
                           </div>
                         </div>
                       </div>
                       <div className="g">
                         <div className="div4">
-                          <div className="div5">
+                          {/* <div className="div5">
                             <div className="addresses">Addresses</div>
-                          </div>
+                          </div> */}
                         </div>
                       </div>
                     </div>
@@ -69,7 +151,7 @@ const CustomerProfile = () => {
                   <div className="div7">
                     <div className="div8">
                       <div className="div9">
-                        <b className="b1">Your Profile</b>
+                        {/* <b className="b1">Your Profile</b> */}
                       </div>
                     </div>
                   </div>
@@ -78,19 +160,19 @@ const CustomerProfile = () => {
                   <div className="div11">
                     <div className="div12">
                       <div className="div13">
-                        <img className="icon" alt="" src={userImg} />
+                        {/* <img className="icon" alt="" src={userImg} /> */}
                       </div>
                       <div className="div14">
                         <div className="div15">
                           <div className="div16">
-                            <b className="linda">Linda</b>
+                            {/* <b className="linda">Linda</b> */}
                           </div>
                         </div>
                         <div className="div17">
                           <div className="div18">
-                            <div className="lindagreygmailcom">
+                            {/* <div className="lindagreygmailcom">
                               lindagrey@gmail.com
-                            </div>
+                            </div> */}
                           </div>
                         </div>
                       </div>
@@ -127,6 +209,8 @@ const CustomerProfile = () => {
                             placeholder={"First Name"}
                             className="div31"
                             type={"text"}
+                            value={firstName}
+                            handleOnChange={handleFirstNameChange}
                           />
                         </div>
                         <div className="div33">
@@ -137,6 +221,8 @@ const CustomerProfile = () => {
                             placeholder={"Last Name"}
                             className="div35"
                             type={"text"}
+                            value={LastName}
+                            handleOnChange={handleLastNameChange}
                           />
                         </div>
                       </div>
@@ -160,6 +246,8 @@ const CustomerProfile = () => {
                             placeholder={"Email"}
                             className="div42"
                             type={"email"}
+                            value={email}
+                            onChange={handleEmailChange}
                           />
                         </div>
                       </div>
@@ -183,6 +271,8 @@ const CustomerProfile = () => {
                             placeholder={"Contact Number"}
                             className="div42"
                             type={"number"}
+                            value={contactNumber}
+                            onChange={handleContactNumberChange}
                           />
                         </div>
                       </div>
@@ -208,6 +298,8 @@ const CustomerProfile = () => {
                             placeholder={"Address"}
                             className="ddiv61"
                             type={"text"}
+                            value={address}
+                            onChange={handleAddressChange}
                           />
                         </div>
                       </div>
@@ -231,6 +323,8 @@ const CustomerProfile = () => {
                             placeholder={"Postal Code"}
                             className="div67"
                             type={"text"}
+                            value={postalCode}
+                            onChange={handlePostalCodeChange}
                           />
                         </div>
                         <div className="div70">
@@ -254,11 +348,12 @@ const CustomerProfile = () => {
                           <Form.Select
                             aria-label="Default select example"
                             style={{ height: "40px" }}
+                            value={city}
+                            onChange={handleCityChange}
                           >
-                            {/* <option>{label}</option> */}
                             {["Jaffna"].map((option, index) => {
                               return (
-                                <option value="1" key={index}>
+                                <option value={option} key={index}>
                                   {option}
                                 </option>
                               );
@@ -278,11 +373,12 @@ const CustomerProfile = () => {
                       <Button
                         variant="outline-success"
                         style={{ width: "54%" }}
+                        onClick={handleSubmit}
                       >
                         Save
                       </Button>{" "}
                     </div>
-                    <div className="div78" style = {{marginTop: "50px"}}>
+                    <div className="div78" style={{ marginTop: "50px" }}>
                       <div className="div79">
                         <div className="div80">
                           <b className="password3">Password</b>
@@ -373,6 +469,7 @@ const CustomerProfile = () => {
                       <Button
                         variant="outline-success"
                         style={{ width: "54%" }}
+                       // onClick={handleSubmit}
                       >
                         Change Password
                       </Button>{" "}
