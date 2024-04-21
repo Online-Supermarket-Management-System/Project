@@ -41,5 +41,5 @@ const createInstance = (authorization, contentType) => {
 }
 
 const getBaseInstance = () => {
-    return axios.create({ baseURL: "http://localhost:8020/"})
+    return axios.create({ baseURL: "http://localhost:4000/"})
 }
