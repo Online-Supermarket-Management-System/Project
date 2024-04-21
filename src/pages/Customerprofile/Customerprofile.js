@@ -4,40 +4,71 @@ import "./Customerprofile.css";
 
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 // import userImg from "../../Icons/user.png";
 
-import { getCustomer } from "../../api/customer";
-import { update } from "../../api/put";
+import { getCustomer, update, deleteAcc } from "../../api/customer";
 
 const CustomerProfile = () => {
   const [firstName, setFirstName] = useState("");
   const [LastName, setLastName] = useState("");
-  const [firstNameEdited, setFirstNameEdited] = useState("");
-  const [LastNameEdited, setLastNameEdited] = useState("");
   const [email, setEmail] = useState("");
   const [contactNumber, setContactNumber] = useState("");
   const [address, setAddress] = useState("");
   const [postalCode, setPostalCode] = useState("");
   const [city, setCity] = useState("");
+  const [id, setId] = useState("")
+
+  const [firstNameEdited, setFirstNameEdited] = useState("");
+  const [LastNameEdited, setLastNameEdited] = useState("");
+  const [emailEdited, setEmailEdited] = useState("");
+  const [contactNumberEdited, setContactNumberEdited] = useState("");
+  const [addressEdited, setAddressEdited] = useState("");
+  const [postalCodeEdited, setPostalCodeEdited] = useState("");
+  const [cityEdited, setCityEdited] = useState("");
+  
   useEffect(() => {
     getCustomerData();
   }, []);
 
   const getCustomerData = async () => {
     try {
-      const email = "rajpragashraj30@gmail.com";
+      const email = localStorage.getItem("customerEmail");
+      console.log(email)
+
       const response = await getCustomer(email);
       console.log(response);
 
+      setEmail(email)
+
+      const customerId = localStorage.getItem("customerId");
+      console.log("cus", customerId);
+
+      setId(customerId);
+
       if (response.success) {
         setFirstName(response.data.first_name);
+        setFirstNameEdited(response.data.first_name);
+
         setLastName(response.data.last_name);
+        setLastNameEdited(response.data.last_name);
+
         setEmail(response.data.email);
+        setEmailEdited(response.data.email);
+
         setContactNumber(response.data.contact_number);
+        setContactNumberEdited(response.data.contact_number);
+
         setAddress(response.data.address);
+        setAddressEdited(response.data.address);
+
         setPostalCode(response.data.postal_code);
+        setPostalCodeEdited(response.data.postal_code);
+
         setCity(response.data.city);
+        setCityEdited(response.data.city);
       }
     } catch (error) {
       console.error(error);
@@ -55,38 +86,59 @@ const CustomerProfile = () => {
   };
 
   const handleContactNumberChange = (e) => {
-    setContactNumber(e.target.value);
+    setContactNumberEdited(e.target.value);
   };
 
   const handleAddressChange = (e) => {
-    setAddress(e.target.value);
+    setAddressEdited(e.target.value);
   };
 
   const handlePostalCodeChange = (e) => {
-    setPostalCode(e.target.value);
+    setPostalCodeEdited(e.target.value);
   };
 
   const handleCityChange = (e) => {
-    setCity(e.target.value);
+    setCityEdited(e.target.value);
   };
 
   const handleSubmit = async () => {
     const dataToUpdate = {
-      firstName,
-      LastName,
-      email,
-      contactNumber,
-      address,
-      postalCode,
-      city,
+      id: id,
+      first_name: firstNameEdited,
+      last_name: LastNameEdited,
+      email: emailEdited,
+      contact_number: contactNumberEdited,
+      address: addressEdited,
+      postal_code: postalCodeEdited,
+      city:cityEdited,
     };
+    console.log(dataToUpdate);
     try {
-      const response = await update(email, dataToUpdate);
+      const response = await update(dataToUpdate);
       console.log(response);
+      if (response) {
+        toast.success("updated successful");
+      }
+      getCustomerData();
     } catch (error) {
       console.error(error);
+      toast.error("Update failed");
     }
   };
+
+  const handleDeleteAccount = async () => {
+    try {
+      const response = await deleteAcc(id);
+      console.log(response);
+      if (response) {
+        toast.success("Account deleted successful");
+        window.location.href = "/";
+      }
+    } catch (error) {
+      console.error(error);
+      toast.error("Account deletion failed");
+    }
+  }
 
   return (
     <div className="customer-profile">
@@ -209,8 +261,8 @@ const CustomerProfile = () => {
                             placeholder={"First Name"}
                             className="div31"
                             type={"text"}
-                            value={firstName}
-                            handleOnChange={handleFirstNameChange}
+                            value={firstNameEdited}
+                            onChange={handleFirstNameChange}
                           />
                         </div>
                         <div className="div33">
@@ -221,8 +273,8 @@ const CustomerProfile = () => {
                             placeholder={"Last Name"}
                             className="div35"
                             type={"text"}
-                            value={LastName}
-                            handleOnChange={handleLastNameChange}
+                            value={LastNameEdited}
+                            onChange={handleLastNameChange}
                           />
                         </div>
                       </div>
@@ -246,7 +298,7 @@ const CustomerProfile = () => {
                             placeholder={"Email"}
                             className="div42"
                             type={"email"}
-                            value={email}
+                            value={emailEdited}
                             onChange={handleEmailChange}
                           />
                         </div>
@@ -271,7 +323,7 @@ const CustomerProfile = () => {
                             placeholder={"Contact Number"}
                             className="div42"
                             type={"number"}
-                            value={contactNumber}
+                            value={contactNumberEdited}
                             onChange={handleContactNumberChange}
                           />
                         </div>
@@ -298,7 +350,7 @@ const CustomerProfile = () => {
                             placeholder={"Address"}
                             className="ddiv61"
                             type={"text"}
-                            value={address}
+                            value={addressEdited}
                             onChange={handleAddressChange}
                           />
                         </div>
@@ -323,7 +375,7 @@ const CustomerProfile = () => {
                             placeholder={"Postal Code"}
                             className="div67"
                             type={"text"}
-                            value={postalCode}
+                            value={postalCodeEdited}
                             onChange={handlePostalCodeChange}
                           />
                         </div>
@@ -348,7 +400,7 @@ const CustomerProfile = () => {
                           <Form.Select
                             aria-label="Default select example"
                             style={{ height: "40px" }}
-                            value={city}
+                            value={cityEdited}
                             onChange={handleCityChange}
                           >
                             {["Jaffna"].map((option, index) => {
@@ -474,6 +526,15 @@ const CustomerProfile = () => {
                         Change Password
                       </Button>{" "}
                     </div>
+                    <div className="div108">
+                      <Button
+                        variant="outline-danger"
+                        style={{ width: "54%" }}
+                        onClick={handleDeleteAccount}
+                      >
+                        Delete My Account
+                      </Button>{" "}
+                    </div>
                   </div>
                 </div>
               </div>
@@ -481,6 +542,7 @@ const CustomerProfile = () => {
           </div>
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 };
