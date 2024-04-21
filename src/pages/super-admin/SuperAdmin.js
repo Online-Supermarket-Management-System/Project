@@ -1,29 +1,80 @@
-import "./SuperAdmin.css";
-
-import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import Table from "react-bootstrap/Table";
-
-import React, { useState } from "react";
+import Button from "react-bootstrap/Button";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const SuperAdmin = () => {
-    const [searchKey, setSearchKey] = useState("");
+  const [registrationData, setRegistrationData] = useState([]);
+  const [filteredData, setFilteredData] = useState([]);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [error, setError] = useState(null);
 
-    const dummyData = [
-        {id: 1, employeeId: "EMP001", nic: "123456789V", contactNo: "0712345678", requestedTime: "2021-09-01 10:00:00"},
-        {id: 2, employeeId: "EMP002,", nic: "123456789V", contactNo: "0712345678", requestedTime: "2021-09-01 10:00:00"},
-        {id: 3, employeeId: "EMP003,", nic: "123456789V", contactNo: "0712345678", requestedTime: "2021-09-01 10:00:00"},
-        {id: 4, employeeId: "EMP004,", nic: "123456789V", contactNo: "0712345678", requestedTime: "2021-09-01 10:00:00"},
-        {id: 5, employeeId: "EMP005,", nic: "123456789V", contactNo: "0712345678", requestedTime: "2021-09-01 10:00:00"}
-    ]
+  useEffect(() => {
+    fetchRegistrationData();
+  }, []);
 
-    const dummySearchData = [
-        {id: 1, employeeId: "EMP001", nic: "123456789V", contactNo: "0712345678"}
-    ]
-
-    const onChange = (e) => {  
-        setSearchKey(e.target.value);
+  const fetchRegistrationData = async () => {
+    try {
+      const response = await axios.get("http://localhost:4000/auth/");
+      setRegistrationData(response.data);
+      setFilteredData(response.data); // Initialize filtered data with all registration data
+    } catch (error) {
+      setError(error.message);
+      console.error("Error fetching registration data:", error);
     }
+  };
+
+  const handleSearch = (query) => {
+    setSearchQuery(query);
+    const filtered = registrationData.filter(user =>
+      user.empId.includes(query) ||
+      user.firstName.includes(query) ||
+      user.lastName.includes(query) ||
+      user.email.includes(query) ||
+      user.contactNumber.includes(query)
+    );
+    setFilteredData(filtered);
+  };
+  const approveUser = async (userId) => {
+    try {
+      const response = await axios.patch(`http://localhost:4000/auth/approve/${userId}`);
+      console.log("Response after approval:", response.data);
+      toast.success("User successfully approved");
+  
+      // Update the registration data and filtered data states
+      const updatedData = registrationData.map(user => {
+        if (user._id === userId) {
+          return { ...user, approved: true };
+        }
+        return user;
+      });
+  
+      // Set the updated data in state
+      setRegistrationData(updatedData);
+      setFilteredData(updatedData); // Ensure both states are updated
+    } catch (error) {
+      console.error("Error approving user:", error);
+      toast.error("Error approving user");
+    }
+  };
+
+  
+  const rejectUser = async (userId) => {
+    try {
+      await axios.delete(`http://localhost:4000/auth/${userId}`);
+      // After successful rejection, update the local registration data by filtering out the rejected user
+      const updatedData = registrationData.filter(user => user._id !== userId);
+      setRegistrationData(updatedData);
+      setFilteredData(updatedData); // Also update the filtered data state
+      toast.success("User successfully deleted");
+    } catch (error) {
+      console.error("Error rejecting user:", error);
+      toast.error("Error deleting user");
+    }
+  };
+  
 
   const renderTable = (tableHeaders, rows) => {
     return (
@@ -31,74 +82,69 @@ const SuperAdmin = () => {
         <thead>
           <tr>
             <th>#</th>
-            {tableHeaders.map((header) => (<th>{header}</th>))}
+            {tableHeaders.map((header, index) => (
+              <th key={index}>{header}</th>
+            ))}
           </tr>
         </thead>
         <tbody>
-            {rows.map((row) => (
-                <tr>
-                    <td>{row.id}</td>
-                    <td>{row.employeeId}</td>
-                    <td>{row.nic}</td>
-                    <td>{row.contactNo}</td>
-                    <td>{row.requestedTime}</td>
-                    <td>
-                        <Button className = "super-admin-approve">Approve</Button>
-                        <Button  className = "super-admin-reject">Reject</Button>
-                    </td>
-                </tr>
-            ))}
+          {rows.map((row, index) => (
+            <tr key={index}>
+              <td>{index + 1}</td>
+              <td>{row.empId}</td>
+              <td>{row.firstName}</td>
+              <td>{row.lastName}</td>
+              <td>{row.email}</td>
+              <td>{row.contactNumber}</td>
+              <td>
+                {!row.approved && (
+                  <Button 
+                    className="super-admin-approve" 
+                    onClick={() => approveUser(row._id)}
+                  >
+                    Approve
+                  </Button>
+                )}
+                 &nbsp;&nbsp;&nbsp;&nbsp; 
+                 <Button 
+                  className="super-admin-reject" 
+                  onClick={() => rejectUser(row._id)}
+                >
+                  Reject
+                </Button>
+              
+              </td>
+            </tr>
+          ))}
         </tbody>
       </Table>
     );
   };
 
-  const renderSearchTable = (tableHeaders, rows) => {
-    return (
-      <Table striped bordered hover>
-        <thead>
-          <tr>
-            <th>#</th>
-            {tableHeaders.map((header) => (<th>{header}</th>))}
-          </tr>
-        </thead>
-        <tbody>
-            {rows.map((row) => (
-                <tr>
-                    <td>{row.id}</td>
-                    <td>{row.employeeId}</td>
-                    <td>{row.nic}</td>
-                    <td>{row.contactNo}</td>
-                    <td>
-                        <Button className = "super-admin-delete">Delete</Button>
-                    </td>
-                </tr>
-            ))}
-        </tbody>
-      </Table>
-    );
-  };
-
-  return <div className="super-admin-profile">
-    <div className="super-admin-profile-header">
+  return (
+    <div className="super-admin-profile">
+       <ToastContainer />
+<div className="super-admin-profile-header">
         <span>Upcoming Register Requests</span>
-    </div>
-    {renderTable(["Employee ID", "NIC", "Contact No", "Requested Time", "Action"], dummyData)}
-    <div className="super-admin-search-header">
-        <span>Search Admin</span>
-    </div>
-    <div className="super-admin-search">
-    <Form.Control
-        placeholder={"Search Admin"}
-        type="text"
-        required
-        value = {searchKey}
-        onChange={onChange}
-        size="sm"
-      />
       </div>
-    {renderSearchTable(["Employee ID", "NIC", "Contact No", "Action"], dummySearchData)}
-  </div>;
+      <div className="search-bar">
+        <input 
+          type="text" 
+          placeholder="Search" 
+          value={searchQuery} 
+          onChange={(e) => handleSearch(e.target.value)} 
+        />
+      </div>
+      {filteredData.length > 0 ? (
+        renderTable(
+          ["Employee ID", "First Name", "Last Name", "Email", "Contact Number", "Action"],
+          filteredData
+        )
+      ) : (
+        <p>No registration data available</p>
+      )}
+    </div>
+  );
 };
 
 export default SuperAdmin;

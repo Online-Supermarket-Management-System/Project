@@ -3,11 +3,23 @@ import React from 'react';
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Table from "react-bootstrap/Table";
+import jsPDF from 'jspdf';
+import 'jspdf-autotable';
 
 const PastPurchace = () => {
     const dummyData = [
         {id: 1, orderId: "ORDER0001", date: "12/12/2023", totalbill: "12500rs", delivery: "Express"}
     ]
+
+    const handlePrint = () => {
+      const doc = new jsPDF();
+      doc.autoTable({
+        head: [['#', 'Order ID', 'Date', 'Total Bill', 'Delivery']],
+        body: dummyData.map((row, index) => [index + 1, row.orderId, row.date, row.totalbill, row.delivery]),
+      });
+      doc.save('past_purchases.pdf');
+    };
+  
 
   const renderTable = (tableHeaders, rows) => {
     return (
@@ -27,7 +39,7 @@ const PastPurchace = () => {
                     <td>{row.totalbill}</td>
                     <td>{row.delivery}</td>
                     <td>
-                        <Button className = "purchaseprint">Print</Button>
+                        <Button className = "purchaseprint" onClick={handlePrint}>Print</Button>
                        
                     </td>
                 </tr>
