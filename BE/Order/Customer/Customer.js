@@ -1,8 +1,9 @@
 // controller.js
+require('dotenv').config();
 const bcrypt = require("bcrypt");
 const nodemailer = require('nodemailer');
 const crypto = require('crypto');
-const ordermodel = require('./model');
+const ordermodel = require('./CustomerModel');
 
 const create = async (req, res) => {
   try {

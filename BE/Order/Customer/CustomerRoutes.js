@@ -9,7 +9,7 @@ const {
   getOrder,
   verifyEmail,
   login
-} = require('./controller');
+} = require('./Customer');
 
 router.post("/create", create);
 router.put("/update", update);
