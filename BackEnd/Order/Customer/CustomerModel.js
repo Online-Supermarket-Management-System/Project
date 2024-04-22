@@ -10,7 +10,7 @@ const orderschema = mongoose.Schema(
     contact_number: {
       type: String,
       required: true,
-      match: [/^\d{10}$/, "Contact number should be 10 digits"],
+      match: [/^\d{9}$/, "Contact number should be 9 digits"],
     },
     email: {
       type: String,
