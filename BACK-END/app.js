@@ -22,7 +22,7 @@ app.options('*', cors());
 
 // Service Management
 
-app.use("/auth", require("./Order/auth/userRoutes"));
+app.use("/auth", require("./Order/admin-auth/userRoutes"));
 app.use("/", require("./Order/Customer/CustomerRoutes"));
 
 app.listen(PORT, () => {
