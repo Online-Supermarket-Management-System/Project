@@ -1,0 +1,986 @@
+.logic-gate {
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    top: 0;
+    z-index: 99;
+    position: sticky;
+    max-width: 100%;
+  }
+  .-child,
+  .image-1-icon {
+    align-self: stretch;
+    height: 0.5px;
+    position: relative;
+    max-width: 100%;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+  .image-1-icon {
+    height: 225px;
+    object-fit: cover;
+  }
+  .welcome-to-northway {
+    margin: 0;
+    width: 325.1px;
+    position: relative;
+    font-size: inherit;
+    letter-spacing: -0.8px;
+    line-height: 40px;
+    font-weight: 700;
+    font-family: inherit;
+    display: inline-block;
+    max-width: 100%;
+  }
+  .image-1-parent,
+  .welcome-to-northway-supermart-wrapper {
+    align-self: stretch;
+    display: flex;
+    align-items: flex-start;
+    max-width: 100%;
+  }
+  .welcome-to-northway-supermart-wrapper {
+    flex-direction: row;
+    justify-content: center;
+    padding: 0 20px;
+    box-sizing: border-box;
+  }
+  .image-1-parent {
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 24px;
+  }
+  .first-name {
+    align-self: stretch;
+    position: relative;
+    line-height: 24px;
+    font-weight: 500;
+  }
+  .register-7--04 {
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 0 0 8px;
+  }
+  .first-name1 {
+    position: relative;
+    line-height: 24px;
+    display: inline-block;
+    min-width: 81.7px;
+  }
+  .register-10--02 {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+  .register-8--02,
+  .register-9--02 {
+    overflow: hidden;
+    align-items: flex-start;
+  }
+  .register-9--02 {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  .register-8--02 {
+    flex: 1;
+    border-radius: 12px;
+    background-color: #e8f2e8;
+    flex-direction: row;
+    padding: 16px 134px 16px 16px;
+    gap: 0;
+    row-gap: 20px;
+  }
+  .register-6--04,
+  .register-7--12,
+  .register-8--02 {
+    display: flex;
+    justify-content: flex-start;
+  }
+  .register-7--12 {
+    align-self: stretch;
+    flex-direction: row;
+    align-items: center;
+    color: #4f964f;
+  }
+  .register-6--04 {
+    flex: 1;
+    flex-direction: column;
+    align-items: flex-start;
+    min-width: 151px;
+  }
+  .last-name {
+    align-self: stretch;
+    position: relative;
+    line-height: 24px;
+    font-weight: 500;
+  }
+  .register-7--05 {
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 0 0 8px;
+  }
+  .last-name1 {
+    position: relative;
+    line-height: 24px;
+    display: inline-block;
+    min-width: 79.6px;
+  }
+  .register-10--03,
+  .register-9--03 {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+  .register-9--03 {
+    overflow: hidden;
+  }
+  .register-7--13,
+  .register-8--03 {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+  }
+  .register-8--03 {
+    flex: 1;
+    border-radius: 12px;
+    background-color: #e8f2e8;
+    overflow: hidden;
+    align-items: flex-start;
+    padding: 16px 136px 16px 16px;
+    gap: 0;
+    row-gap: 20px;
+  }
+  .register-7--13 {
+    align-self: stretch;
+    align-items: center;
+    color: #4f964f;
+  }
+  .register-6--0-parent,
+  .register-6--1,
+  .-container {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+  .register-6--1 {
+    flex: 1;
+    flex-direction: column;
+    min-width: 151px;
+  }
+  .register-6--0-parent,
+  .-container {
+    flex-direction: row;
+    max-width: 100%;
+  }
+  .register-6--0-parent {
+    flex: 1;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .-container {
+    align-self: stretch;
+    padding: 0 16px;
+    box-sizing: border-box;
+  }
+  .address {
+    align-self: stretch;
+    position: relative;
+    line-height: 24px;
+    font-weight: 500;
+  }
+  .register-7--06 {
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 0 0 8px;
+  }
+  .address1 {
+    position: relative;
+    line-height: 24px;
+    display: inline-block;
+    min-width: 61.7px;
+  }
+  .register-10--04 {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+  .register-8--04,
+  .register-9--04 {
+    align-self: stretch;
+    align-items: flex-start;
+  }
+  .register-9--04 {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  .register-8--04 {
+    flex: 1;
+    border-radius: 12px;
+    background-color: #e8f2e8;
+    overflow: hidden;
+    flex-direction: row;
+    padding: 16px 402px 16px 16px;
+    box-sizing: border-box;
+    gap: 0;
+    row-gap: 20px;
+  }
+  .register-6--05,
+  .register-7--14,
+  .register-8--04 {
+    display: flex;
+    justify-content: flex-start;
+    max-width: 100%;
+  }
+  .register-7--14 {
+    align-self: stretch;
+    height: 144px;
+    flex-direction: row;
+    align-items: center;
+    color: #4f964f;
+  }
+  .register-6--05 {
+    flex: 1;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .register-4--31,
+  .register-5--07 {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    max-width: 100%;
+  }
+  .register-5--07 {
+    flex: 1;
+    align-items: flex-end;
+  }
+  .register-4--31 {
+    align-self: stretch;
+    align-items: center;
+    padding: 12px 16px;
+    box-sizing: border-box;
+  }
+  .city {
+    align-self: stretch;
+    position: relative;
+    line-height: 24px;
+    font-weight: 500;
+  }
+  .register-7--07 {
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 0 0 8px;
+  }
+  .city1 {
+    position: relative;
+    line-height: 24px;
+    display: inline-block;
+    min-width: 29.8px;
+  }
+  .register-10--05 {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+  .register-8--05,
+  .register-9--05 {
+    overflow: hidden;
+    align-items: flex-start;
+  }
+  .register-9--05 {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  .register-8--05 {
+    flex: 1;
+    border-radius: 12px;
+    background-color: #e8f2e8;
+    flex-direction: row;
+    padding: 16px 186px 16px 16px;
+    gap: 0;
+    row-gap: 20px;
+  }
+  .register-6--06,
+  .register-7--15,
+  .register-8--05 {
+    display: flex;
+    justify-content: flex-start;
+  }
+  .register-7--15 {
+    align-self: stretch;
+    flex-direction: row;
+    align-items: center;
+    color: #4f964f;
+  }
+  .register-6--06 {
+    flex: 1;
+    flex-direction: column;
+    align-items: flex-start;
+    min-width: 151px;
+  }
+  .state {
+    align-self: stretch;
+    position: relative;
+    line-height: 24px;
+    font-weight: 500;
+  }
+  .register-7--08 {
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 0 0 8px;
+  }
+  .state1 {
+    position: relative;
+    line-height: 24px;
+    display: inline-block;
+    min-width: 40.2px;
+    white-space: nowrap;
+  }
+  .register-10--06,
+  .register-9--06 {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+  .register-9--06 {
+    overflow: hidden;
+  }
+  .register-7--16,
+  .register-8--06 {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+  }
+  .register-8--06 {
+    flex: 1;
+    border-radius: 12px;
+    background-color: #e8f2e8;
+    overflow: hidden;
+    align-items: flex-start;
+    padding: 16px 176px 16px 16px;
+    gap: 0;
+    row-gap: 20px;
+  }
+  .register-7--16 {
+    align-self: stretch;
+    align-items: center;
+    color: #4f964f;
+  }
+  .register-6--0-group,
+  .register-6--11,
+  .-div {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+  .register-6--11 {
+    flex: 1;
+    flex-direction: column;
+    min-width: 151px;
+  }
+  .register-6--0-group,
+  .-div {
+    flex-direction: row;
+    max-width: 100%;
+  }
+  .register-6--0-group {
+    flex: 1;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .-div {
+    align-self: stretch;
+    padding: 0 16px;
+    box-sizing: border-box;
+  }
+  .contact-number {
+    align-self: stretch;
+    position: relative;
+    line-height: 24px;
+    font-weight: 500;
+  }
+  .register-7--09 {
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 0 0 8px;
+  }
+  .contact-number1 {
+    position: relative;
+    line-height: 24px;
+    display: inline-block;
+    min-width: 122.7px;
+  }
+  .register-10--07 {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+  .register-8--07,
+  .register-9--07 {
+    overflow: hidden;
+    align-items: flex-start;
+  }
+  .register-9--07 {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  .register-8--07 {
+    flex: 1;
+    border-radius: 12px;
+    background-color: #e8f2e8;
+    flex-direction: row;
+    padding: 16px 341px 16px 16px;
+    box-sizing: border-box;
+    gap: 0;
+    row-gap: 20px;
+  }
+  .register-6--07,
+  .register-7--17,
+  .register-8--07 {
+    display: flex;
+    justify-content: flex-start;
+    max-width: 100%;
+  }
+  .register-7--17 {
+    align-self: stretch;
+    flex-direction: row;
+    align-items: center;
+    color: #4f964f;
+  }
+  .register-6--07 {
+    flex: 1;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .register-4--51,
+  .register-5--08 {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    max-width: 100%;
+  }
+  .register-5--08 {
+    flex: 1;
+    align-items: flex-end;
+  }
+  .register-4--51 {
+    align-self: stretch;
+    align-items: center;
+    padding: 12px 16px;
+    box-sizing: border-box;
+  }
+  .email1 {
+    align-self: stretch;
+    position: relative;
+    line-height: 24px;
+    font-weight: 500;
+  }
+  .register-7--010 {
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 0 0 8px;
+  }
+  .email2 {
+    position: relative;
+    line-height: 24px;
+    display: inline-block;
+    min-width: 41.3px;
+    white-space: nowrap;
+  }
+  .register-10--08 {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+  .register-8--08,
+  .register-9--08 {
+    overflow: hidden;
+    align-items: flex-start;
+  }
+  .register-9--08 {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  .register-8--08 {
+    flex: 1;
+    border-radius: 12px;
+    background-color: #e8f2e8;
+    flex-direction: row;
+    padding: 16px 423px 16px 16px;
+    box-sizing: border-box;
+    gap: 0;
+    row-gap: 20px;
+  }
+  .register-6--08,
+  .register-7--18,
+  .register-8--08 {
+    display: flex;
+    justify-content: flex-start;
+    max-width: 100%;
+  }
+  .register-7--18 {
+    align-self: stretch;
+    flex-direction: row;
+    align-items: center;
+    color: #4f964f;
+  }
+  .register-6--08 {
+    flex: 1;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .register-4--61,
+  .register-5--09 {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    max-width: 100%;
+  }
+  .register-5--09 {
+    flex: 1;
+    align-items: flex-end;
+  }
+  .register-4--61 {
+    align-self: stretch;
+    align-items: center;
+    padding: 12px 16px;
+    box-sizing: border-box;
+    z-index: 1;
+  }
+  .password1 {
+    align-self: stretch;
+    position: relative;
+    line-height: 24px;
+    font-weight: 500;
+  }
+  .register-7--011 {
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 0 0 8px;
+  }
+  .password2 {
+    position: relative;
+    line-height: 24px;
+    display: inline-block;
+    min-width: 72.1px;
+  }
+  .register-10--09 {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+  .register-8--09,
+  .register-9--09 {
+    overflow: hidden;
+    align-items: flex-start;
+  }
+  .register-9--09 {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  .register-8--09 {
+    flex: 1;
+    border-radius: 12px;
+    background-color: #e8f2e8;
+    flex-direction: row;
+    padding: 16px 392px 16px 16px;
+    box-sizing: border-box;
+    gap: 0;
+    row-gap: 20px;
+  }
+  .register-6--09,
+  .register-7--19,
+  .register-8--09 {
+    display: flex;
+    justify-content: flex-start;
+    max-width: 100%;
+  }
+  .register-7--19 {
+    align-self: stretch;
+    flex-direction: row;
+    align-items: center;
+    color: #4f964f;
+  }
+  .register-6--09 {
+    flex: 1;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .register-4--7,
+  .register-5--010 {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    max-width: 100%;
+  }
+  .register-5--010 {
+    flex: 1;
+    align-items: flex-end;
+  }
+  .register-4--7 {
+    align-self: stretch;
+    align-items: center;
+    padding: 12px 16px;
+    box-sizing: border-box;
+    z-index: 2;
+  }
+  .confirm-password {
+    align-self: stretch;
+    position: relative;
+    line-height: 24px;
+    font-weight: 500;
+  }
+  .register-7--012 {
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 0 0 8px;
+  }
+  .confirm-password1 {
+    position: relative;
+    line-height: 24px;
+    white-space: nowrap;
+  }
+  .register-10--010,
+  .register-9--010 {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+  .register-9--010 {
+    overflow: hidden;
+  }
+  .register-7--110,
+  .register-8--010 {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    max-width: 100%;
+  }
+  .register-8--010 {
+    flex: 1;
+    border-radius: 12px;
+    background-color: #e8f2e8;
+    overflow: hidden;
+    align-items: flex-start;
+    padding: 16px 329px 16px 16px;
+    box-sizing: border-box;
+    gap: 0;
+    row-gap: 20px;
+  }
+  .register-7--110 {
+    align-self: stretch;
+    align-items: center;
+    color: #4f964f;
+  }
+  .register-5--011,
+  .register-6--010 {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    max-width: 100%;
+  }
+  .register-5--011 {
+    flex-direction: row;
+    align-items: flex-end;
+  }
+  .register-4--5-parent,
+  .register-4--8 {
+    align-self: stretch;
+    display: flex;
+    justify-content: flex-start;
+    box-sizing: border-box;
+    max-width: 100%;
+  }
+  .register-4--8 {
+    flex-direction: row;
+    align-items: center;
+    padding: 12px 16px;
+    z-index: 3;
+  }
+  .register-4--5-parent {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0 0 4px;
+  }
+  .i-agree-to {
+    position: relative;
+    line-height: 21px;
+    font-weight: 500;
+  }
+
+  .i-agree-to-accepted {
+    position: relative;
+    line-height: 21px;
+    font-weight: 500;
+    background-color: #1ae61a
+  }
+
+  .register-6--011,
+  .register-7--013 {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+  .register-7--013 {
+    align-self: stretch;
+  }
+  .register-6--011 {
+    flex: 1;
+  }
+  .register-5--0-wrapper,
+  .register-5--012 {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    box-sizing: border-box;
+    max-width: 100%;
+  }
+  .register-5--012 {
+    flex: 1;
+    border-radius: 12px;
+    border: 1px solid #d1e8d1;
+    padding: 11px 16px 13px 14px;
+  }
+  .register-5--0-wrapper {
+    width: 361.8px;
+    padding: 0 16px 4px;
+    font-size: 14px;
+    cursor: pointer;
+  }
+
+  .register-5--0-wrapper-accepted {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    box-sizing: border-box;
+    max-width: 100%;
+    width: 361.8px;
+    padding: 0 16px 4px;
+    font-size: 14px;
+    color: #06ae06;
+    cursor: pointer;
+  }
+
+  .create-account {
+    position: relative;
+    letter-spacing: 0.21px;
+    line-height: 21px;
+    display: inline-block;
+    min-width: 106.9px;
+  }
+  .register-6--012,
+  .register-7--014 {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+  .register-6--012 {
+    background-color: #1ae61a;
+    overflow: hidden;
+  }
+  .register-4--10,
+  .register-5--013 {
+    display: flex;
+    flex-direction: row;
+    box-sizing: border-box;
+    max-width: 100%;
+  }
+  .register-5--013 {
+    flex: 1;
+    border-radius: 12px;
+    background-color: #1ae61a;
+    overflow: hidden;
+    align-items: center;
+    justify-content: center;
+    padding: 9.5px 20px;
+  }
+  .register-4--10 {
+    align-self: stretch;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 12px 16px;
+  }
+  .already-registered-log {
+    width: 175px;
+    position: relative;
+    line-height: 21px;
+    display: inline-block;
+  }
+  .already-registered-log-in-wrapper {
+    align-self: stretch;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 0 20px;
+    text-align: center;
+    color: #4f964f;
+  }
+  .register-4--10-parent,
+  .-group {
+    align-self: stretch;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  .register-4--10-parent {
+    display: flex;
+    align-items: flex-start;
+    gap: 4px;
+    max-width: 100%;
+    font-size: 14px;
+  }
+  .-group {
+    gap: 12px;
+    text-align: left;
+    font-size: 16px;
+  }
+  .-group,
+  .-parent,
+  .-wrapper {
+    display: flex;
+    align-items: flex-start;
+    max-width: 100%;
+  }
+  .-parent {
+    width: 512px;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 64px;
+  }
+  .-wrapper {
+    width: 1412px;
+    flex-direction: row;
+    justify-content: center;
+    padding: 0 20px;
+    box-sizing: border-box;
+    text-align: center;
+    font-size: 32px;
+    color: #0d1c0d;
+    font-family: "Public Sans";
+  }
+  .instance-parent,
+  .registration-copy {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  .instance-parent {
+    align-self: stretch;
+    align-items: center;
+    padding: 0 14px 112px 0;
+    box-sizing: border-box;
+    gap: 39.5px;
+    max-width: 100%;
+  }
+  .registration-copy {
+    width: 100%;
+    position: relative;
+    background-color: #f7fcf7;
+    overflow: hidden;
+    align-items: flex-start;
+    letter-spacing: normal;
+  }
+  @media screen and (max-width: 1200px) {
+    .instance-parent {
+      padding-bottom: 73px;
+      box-sizing: border-box;
+    }
+  }
+  @media screen and (max-width: 800px) {
+    .welcome-to-northway {
+      font-size: 26px;
+      line-height: 32px;
+    }
+    .register-8--04 {
+      padding-right: 201px;
+      box-sizing: border-box;
+    }
+    .register-8--07,
+    .register-8--08 {
+      padding-right: 170px;
+      box-sizing: border-box;
+    }
+    .register-8--08 {
+      padding-right: 211px;
+    }
+    .register-8--010,
+    .register-8--09 {
+      padding-right: 196px;
+      box-sizing: border-box;
+    }
+    .register-8--010 {
+      padding-right: 164px;
+    }
+    .-parent {
+      gap: 32px 64px;
+    }
+    .instance-parent {
+      gap: 20px 39.5px;
+      padding-bottom: 47px;
+      box-sizing: border-box;
+    }
+  }
+  @media screen and (max-width: 450px) {
+    .welcome-to-northway {
+      font-size: 19px;
+      line-height: 24px;
+    }
+    .-parent {
+      gap: 16px 64px;
+    }
+    .instance-parent {
+      padding-bottom: 31px;
+      box-sizing: border-box;
+    }
+  }
+  

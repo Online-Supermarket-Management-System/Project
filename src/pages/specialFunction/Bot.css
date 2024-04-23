@@ -1,0 +1,94 @@
+.chat-bot-root{
+    position: fixed;
+}
+
+.react-chatbot-kit-chat-container {
+    /* position: fixed !important;
+    bottom: 90px;
+    right: 20px;
+    z-index: 10; */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+    width: 880px;
+}
+
+/* .react-chatbot-kit-chat-message-container {
+    background-color: rgb(236, 237, 237);
+} */
+
+.react-chatbot-kit-chat-bot-message {
+    margin-left: 0;
+}
+
+.react-chatbot-kit-chat-bot-avatar-container {
+    background-image: url("../resources/chatbot.png");
+    background-size: contain; /* or contain, depending on your preference */
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.react-chatbot-kit-chat-bot-avatar-letter {
+    display: none;
+}
+
+.react-chatbot-kit-user-avatar-container {
+    background-image: url("../resources/user.png");
+    background-size: contain; /* or contain, depending on your preference */
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+/* .react-chatbot-kit-user-chat-message {
+    background-color: #2471A3;
+} */
+
+/* .react-chatbot-kit-user-chat-message-arrow {
+    color: #2471A3;
+} */
+
+
+.chat-bubbleX-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 15px;
+    width: 100%;
+}
+
+.startBtn-container {
+    background: rgb(236, 240, 238);
+    color: rgb(0, 0, 0);
+    word-wrap: break-word;
+    border-radius: 20px;
+    font-size: 16px;
+    line-height: 20px;
+    max-width: 70%;
+    padding: 15px 17px;
+    white-space: pre-wrap;
+    border-top-left-radius: 5px;
+    margin-left: 3.2rem;
+    font-size: 0.85rem;
+}
+
+.start-btn {
+    background-color: rgb(92, 204, 157);
+    color: white;
+    padding: .5rem 1rem;
+    border-radius: 999px;
+    border: none;
+    cursor: pointer;
+    margin-left: 3rem;
+}
+
+/* .start-btn:hover {
+    background-color: rgb(92, 204, 157, 0.7);
+} */
+
+.single-button {
+    background-color: #fff;
+    color: #000;
+    padding: 8px;
+    border-radius: 10px;
+    cursor: pointer;
+}

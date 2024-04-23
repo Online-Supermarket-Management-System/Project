@@ -1,0 +1,388 @@
+.login-6--0,
+.login-7--0 {
+  height: 218px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.login-7--0 {
+  width: 480px;
+  position: absolute;
+  margin: 0 auto ;
+  top: 50%;
+  left:50%;
+  transform: translate(-50%, -50%);
+  border-radius: 12px;
+  object-fit: cover;
+  align-items: center; /* Center horizontally */
+  justify-content: center; /* Center vertically */
+}
+.login-6--0 {
+    align-self: stretch;
+    background-color: #f7fcf7;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center horizontally */
+    justify-content: center; /* Center vertically */
+    position: relative;
+  }
+.login-5--0 {
+  padding: 12px 16px;
+}
+.login-4--0,
+.login-5--0 {
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center horizontally */
+  justify-content: center; /* Center vertically */
+}
+.welcome-back {
+  margin: 0;
+  position: relative;
+  font-size: 32px;
+  letter-spacing: -0.8px;
+  line-height: 40px;
+  font-weight: 700;
+  font-family: "Public Sans";
+  color: #0d1c0d;
+  text-align: left;
+  align-items: center; /* Center horizontally */
+  justify-content: center; /* Center vertically */
+}
+.login-4--1,
+.login-5--01 {
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-items: center; /* Center horizontally */
+  justify-content: center; /* Center vertically */
+}
+.login-4--1 {
+  padding: 24px 16px 12px;
+}
+.email {
+  align-self: stretch;
+  position: relative;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 500;
+  font-family: "Public Sans";
+  color: #0d1c0d;
+  text-align: left;
+}
+.login-7--01 {
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 0 0 8px;
+}
+.johndoegmailcom {
+  position: relative;
+  font-size: 16px;
+  line-height: 24px;
+  font-family: "Public Sans";
+  color: #0d1c0d;
+  text-align: left;
+  white-space: nowrap;
+}
+.login-10--0,
+.login-8--0,
+.login-9--0 {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.login-8--0,
+.login-9--0 {
+  overflow: hidden;
+}
+.login-8--0 {
+  flex: 1;
+  border-radius: 12px;
+  background-color: #e8f2e8;
+  flex-direction: row;
+  padding: 16px 314px 16px 16px;
+  box-sizing: border-box;
+  max-width: 100%;
+  gap: 0;
+  row-gap: 20px;
+}
+.login-7--1 {
+  align-self: stretch;
+  flex-direction: row;
+  align-items: center;
+}
+.login-4--2,
+.login-5--02,
+.login-6--01,
+.login-7--1 {
+  display: flex;
+  justify-content: flex-start;
+  max-width: 100%;
+}
+.login-6--01 {
+  flex: 1;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.login-4--2,
+.login-5--02 {
+  flex-direction: row;
+}
+.login-5--02 {
+  flex: 1;
+  align-items: flex-end;
+}
+.login-4--2 {
+  align-self: stretch;
+  align-items: center;
+  padding: 12px 16px;
+  box-sizing: border-box;
+}
+.password {
+  align-self: stretch;
+  position: relative;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 500;
+  font-family: "Public Sans";
+  color: #0d1c0d;
+  text-align: left;
+}
+.login-7--02 {
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 0 0 8px;
+}
+.div {
+  position: relative;
+  font-size: 16px;
+  line-height: 24px;
+  font-family: "Public Sans";
+  color: #0d1c0d;
+  text-align: left;
+  display: inline-block;
+  min-width: 63.1px;
+  white-space: nowrap;
+}
+.login-10--01,
+.login-8--01,
+.login-9--01 {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.login-8--01,
+.login-9--01 {
+  overflow: hidden;
+}
+.login-8--01 {
+  flex: 1;
+  border-radius: 12px;
+  background-color: #e8f2e8;
+  flex-direction: row;
+  padding: 16px 401px 16px 16px;
+  box-sizing: border-box;
+  max-width: 100%;
+  gap: 0;
+  row-gap: 20px;
+}
+.login-7--11 {
+  align-self: stretch;
+  flex-direction: row;
+  align-items: center;
+}
+.login-4--3,
+.login-5--03,
+.login-6--02,
+.login-7--11 {
+  display: flex;
+  justify-content: flex-start;
+  max-width: 100%;
+}
+.login-6--02 {
+  flex: 1;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.login-4--3,
+.login-5--03 {
+  flex-direction: row;
+}
+.login-5--03 {
+  flex: 1;
+  align-items: flex-end;
+}
+.login-4--3 {
+  align-self: stretch;
+  align-items: center;
+  padding: 12px 16px;
+  box-sizing: border-box;
+}
+.forgot-password {
+  position: relative;
+  font-size: 14px;
+  line-height: 21px;
+  font-family: "Public Sans";
+  color: #4f964f;
+  text-align: left;
+  display: inline-block;
+  min-width: 116.5px;
+}
+.login-4--4,
+.login-5--04 {
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.login-4--4 {
+  padding: 4px 16px 12px;
+}
+.log-in {
+  position: relative;
+  font-size: 14px;
+  letter-spacing: 0.21px;
+  line-height: 21px;
+  display: inline-block;
+  font-family: "Public Sans";
+  color: #0d1c0d;
+  text-align: left;
+  min-width: 41.3px;
+  white-space: nowrap;
+}
+.login-6--03,
+.login-7--03 {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.login-6--03 {
+  background-color: #1ae61a;
+  overflow: hidden;
+}
+.login-4--5,
+.login-5--05 {
+  display: flex;
+  flex-direction: row;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+.login-5--05 {
+  flex: 1;
+  border-radius: 12px;
+  background-color: #1ae61a;
+  overflow: hidden;
+  align-items: center;
+  justify-content: center;
+  padding: 9.5px 20px;
+}
+.login-4--5 {
+  align-self: stretch;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 12px 16px;
+}
+.new-customer-register {
+  width: 161.5px;
+  position: relative;
+  font-size: 14px;
+  line-height: 21px;
+  font-family: "Public Sans";
+  color: #4f964f;
+  text-align: center;
+  display: inline-block;
+}
+.login-4--6,
+.login-5--06 {
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0 20px;
+}
+.login-4--6 {
+  padding: 4px 16px 12px;
+}
+.login-2--1,
+.login-3--0 {
+  display: flex;
+  align-items: flex-start;
+  box-sizing: border-box;
+}
+.login-3--0 {
+  margin: 0;
+  width: 512px;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 20px 0;
+  max-width: 100%;
+}
+.login-2--1 {
+  width: 1437px;
+  flex-direction: row;
+  justify-content: center;
+  padding: 20px;
+  max-width: 112%;
+  flex-shrink: 0;
+}
+.login-1--0 {
+  width: 1300px;
+  padding: 0 20px 0 0;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+.login-0--0,
+.login-1--0,
+.login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+.login-0--0 {
+  align-self: stretch;
+  background-color: #f7fcf7;
+  min-height: 1024px;
+  max-width: 100%;
+}
+.login {
+  width: 100%;
+  position: relative;
+  background-color: #fff;
+  letter-spacing: normal;
+}
+@media screen and (max-width: 975px) {
+  .welcome-back {
+    font-size: 26px;
+    line-height: 32px;
+  }
+}
+@media screen and (max-width: 725px) {
+  .login-8--0,
+  .login-8--01 {
+    padding-right: 157px;
+    box-sizing: border-box;
+  }
+  .login-8--01 {
+    padding-right: 200px;
+  }
+}
+@media screen and (max-width: 450px) {
+  .welcome-back {
+    font-size: 19px;
+    line-height: 24px;
+  }
+}
