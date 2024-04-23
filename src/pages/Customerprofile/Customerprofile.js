@@ -150,17 +150,17 @@ const CustomerProfile = () => {
                 <div className="u">
                   <div className="i">
                     <div className="o">
-                      <div className="p">
+                      <a className="p" href = "/pastpurchase">
                         <div className="h">
                           <div className="j">
-                            {/* <div className="k">Profile</div> */}
+                            <div className="k">Past Purchases</div>
                           </div>
                         </div>
-                      </div>
+                      </a>
                       <div className="a">
                         <div className="l">
                           <div className="z">
-                            {/* <div className="x">Orders</div> */}
+                            {/* <div className="x">Purchases</div> */}
                           </div>
                         </div>
                       </div>

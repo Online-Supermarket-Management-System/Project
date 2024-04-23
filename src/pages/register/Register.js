@@ -6,6 +6,9 @@ import InputField from "../../components/Inputs/InputField";
 import TextArea from "../../components/Inputs/TextArea";
 import InputSelect from "../../components/Inputs/InputSelect";
 
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 import Button from "react-bootstrap/Button";
 
 import { register } from "../../api/auth";
@@ -89,8 +92,10 @@ const RegistrationCopy = () => {
     try {
       const response = await register(data);
       console.log("response", response);
+      window.location.href = "/login";
     } catch (error) { 
       console.log("error", error);
+      toast.error("Register failed");
     }
   };
 
@@ -291,6 +296,7 @@ const RegistrationCopy = () => {
           </section>
         </main>
       </div>
+      <ToastContainer />  
     </Form>
   );
 };
