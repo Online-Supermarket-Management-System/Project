@@ -40,6 +40,19 @@ const createInstance = (authorization, contentType) => {
     return instance
 }
 
+const PUT = async (endpoint, data, authorization) => {
+  const instance = createInstance(authorization, 'application/json');
+  const response = await instance.put(endpoint, data);
+  return response.data;
+};
+
+export const DELETE = async (endpoint, data, authorization) => {
+    const instance = createInstance(authorization, 'application/json');
+    const response = await instance.delete(endpoint, data);
+    return response.data;
+  };
+
 const getBaseInstance = () => {
-    return axios.create({ baseURL: "http://localhost:8020/"})
+    return axios.create({ baseURL: "http://localhost:4000/"})
 }
+export { PUT };

@@ -2,6 +2,7 @@
     position: relative;
     line-height: 21px;
     font-weight: 500;
+    width: 100%;
   }
   .h,
   .j,
@@ -10,13 +11,14 @@
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
+    cursor: pointer;
   }
   .j {
     align-self: stretch;
   }
   .h,
   .p {
-    width: 43.2px;
+    width: 100px;
     height: 21px;
   }
   .p {

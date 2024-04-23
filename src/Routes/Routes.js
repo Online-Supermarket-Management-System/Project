@@ -4,6 +4,10 @@ import Register from "../pages/register/Register"
 import CustomerProfile from "../pages/Customerprofile/Customerprofile"
 import AdminHomePage from "../pages/adminhome/adminhome"
 import AdminLogin from "../pages/admin-login/AdminLogin"
+import AdminProfile from "../pages/admin-profile/AdminProfile"
+import SuperAdmin from "../pages/super-admin/SuperAdmin"
+import PastPurchace from "../pages/past-purchace/PastPurchace"
+import Help from "../pages/specialFunction/Help"
 
 const routes = {
     data: [
@@ -41,6 +45,30 @@ const routes = {
             name: "adminLogin",
             path: "/adminLogin",
             component: <AdminLogin/>,
+            type: "",
+         },
+         {
+            name: "adminProfile",
+            path: "/adminProfile",
+            component: <AdminProfile/>,
+            type: "",
+         },
+         {
+            name: "superAdmin",
+            path: "/superAdmin",
+            component: <SuperAdmin/>,
+            type: "",
+         },
+         {
+            name: "PastPurchase",
+            path: "/PastPurchase",
+            component: <PastPurchace/>,
+            type: "",
+         },
+         {
+            name: "help",
+            path: "/help",
+            component: <Help />,
             type: "",
          }
     ]

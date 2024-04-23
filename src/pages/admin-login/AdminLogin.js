@@ -1,57 +1,141 @@
 import React, { Component } from "react";
-
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-
 import "./AdminLogin.css";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import axios from "axios";
+
+import { adminLogin } from "../../api/adminLogin";
 
 export default class AdminLogin extends Component {
   state = {
-    validated: false,
-    id: "",
-    password: "",
-    contactNo: "",
-    nic: "",
-    registeralidated: false,
-    registerId: "",
+    loginEmail: "",
+    loginPassword: "",
+    empId: "",
+    firstName: "",
+    lastName: "",
+    registerEmail: "",
+    contactNumber: "",
     registerPassword: "",
   };
 
-  handleSubmit = (event) => {
+  handleSubmit = async (event) => {
+    event.preventDefault();
     const form = event.currentTarget;
+    const { loginEmail, loginPassword } = this.state;
 
     if (form.checkValidity() === false) {
-      event.preventDefault();
       event.stopPropagation();
     }
 
-    this.setState({ validated: true });
+    try {
+      const data = {
+        empId: loginEmail,
+        password: loginPassword,
+      };
+      const response = await adminLogin(data);
+      console.log(response);
+
+      if (response.status === 200) {
+        if (response.token && response.approved) {
+          localStorage.setItem('role', response.role);
+          const role = localStorage.getItem("role");
+          console.log("role:", role);
+          console.log("Login successful");
+          toast.success("Login successful");
+          window.location.href = "/adminhome";
+
+          this.setState({
+            loginEmail: "",
+            loginPassword: ""
+          });
+
+        } else if (!response.approved) {
+          console.log("Account pending approval by superadmin");
+          
+          toast.error("Your account is pending approval by superadmin.");
+        } else {
+          console.log("Incorrect ID or password");
+          toast.error("Incorrect ID or password");
+        }
+      } else {
+        console.log("Login failed");
+        toast.error("Login failed");
+      }
+    } catch (error) {
+      console.error("Error occurred:", error);
+      toast.error("Your account is pending approval by superadmin.");
+    }
   };
 
-  handleRegisterSubmit = (event) => {
+  handleRegisterSubmit = async (event) => {
+    event.preventDefault();
     const form = event.currentTarget;
+    const {
+      empId,
+      firstName,
+      lastName,
+      registerEmail,
+      contactNumber,
+      registerPassword,
+    } = this.state;
 
     if (form.checkValidity() === false) {
-      event.preventDefault();
       event.stopPropagation();
+    } else {
+      try {
+        const response = await axios.post("http://localhost:4000/auth/", {
+          empId,
+          firstName,
+          lastName,
+          email: registerEmail,
+          contactNumber,
+          password: registerPassword,
+        });
+
+        if (response.status === 201) {
+          console.log("Registration successful");
+          toast.success("Registration successful");
+
+          this.setState({
+            empId: "",
+            firstName: "",
+            lastName: "",
+            registerEmail: "",
+            contactNumber: "",
+            registerPassword: "",
+          });
+        } else {
+          console.log("Registration failed");
+          toast.error("Registration failed");
+        }
+      } catch (error) {
+        console.error("Error occurred during registration:", error);
+        toast.error("User already exits");
+      }
     }
 
-    this.setState({ registeralidated: true });
+    //this.setState({ registerValidated: true });
   };
 
-  handleEmailChange = (event) => {
-    this.setState({ id: event.target.value });
+  handleLoginEmailChange = (event) => {
+    this.setState({ loginEmail: event.target.value });
   };
 
-  handlePasswordChange = (event) => {
-    this.setState({ password: event.target.value });
+  handleLoginPasswordChange = (event) => {
+    this.setState({ loginPassword: event.target.value });
   };
 
-  handleInputChange = (event) => {
+  handleRegisterInputChange = (event) => {
     this.setState({ [event.target.name]: event.target.value });
   };
 
-  renderInputField = (label, type, onChange, value, placeholder) => {
+  renderInputField = (label, type, onChange, value, placeholder, formType) => {
+    // if (formType === "register" && (label === "Email" || label === "Password")) {
+    //   return null; // Do not render email and password fields in the register form
+    // }
+
     return (
       <div className="login-6--01">
         <div className="login-7--01">
@@ -70,21 +154,14 @@ export default class AdminLogin extends Component {
   };
 
   renderLogin = () => {
-    const { id, password } = this.state;
+    const { loginEmail, loginPassword, validated } = this.state;
     return (
-      <form className="admin-login-3--0">
-        {/* <div className="login-4--0">
-                    <div className="login-5--0">
-                      <div className="login-6--0">
-                        <img
-                          className="login-7--0"
-                          loading="lazy"
-                          alt=""
-                          src="home page.jpg"
-                        />
-                      </div>
-                    </div>
-                  </div> */}
+      <Form
+        noValidate
+        validated={validated}
+        onSubmit={this.handleSubmit}
+        className="admin-login-3--0"
+      >
         <div className="login-4--1">
           <div className="login-5--01">
             <h1 className="welcome-back">Admin Login</h1>
@@ -92,7 +169,13 @@ export default class AdminLogin extends Component {
         </div>
         <div className="login-4--2">
           <div className="login-5--02">
-            {this.renderInputField("ID", "text", this.handleEmailChange, id, "Employee ID")}
+            {this.renderInputField(
+              "Id",
+              "text",
+              this.handleLoginEmailChange,
+              loginEmail,
+              "Id"
+            )}
           </div>
         </div>
         <div className="login-4--3">
@@ -100,58 +183,42 @@ export default class AdminLogin extends Component {
             {this.renderInputField(
               "Password",
               "password",
-              this.handlePasswordChange,
-              password,
+              this.handleLoginPasswordChange,
+              loginPassword,
               "Password"
             )}
           </div>
         </div>
-        {/* <div className="login-4--4">
-                    <div className="login-5--04">
-                      <div className="forgot-password">Forgot Password?</div>
-                    </div>
-                  </div> */}
         <div className="login-4--5">
-          {/* <div className="login-5--05">
-                      <div className="login-6--03">
-                        <div className="login-7--03">
-                          <b className="log-in">Log in</b>
-                        </div>
-                      </div>
-                    </div> */}
           <Button
             variant="outline-success"
             style={{ width: "100%" }}
-            onClick={this.handleSubmit}
+            type="submit"
           >
             Log in
           </Button>{" "}
         </div>
-        {/* <div className="login-4--6">
-          <div className="login-5--06">
-            <div className="new-customer-register">Register</div>
-          </div>
-        </div> */}
-      </form>
+      </Form>
     );
   };
 
   renderRegister = () => {
-    const { registerId, registerPassword, contactNo, nic } = this.state;
+    const {
+      empId,
+      firstName,
+      lastName,
+      registerEmail,
+      contactNumber,
+      registerPassword,
+      registerValidated,
+    } = this.state;
     return (
-      <form className="admin-login-3--0">
-        {/* <div className="login-4--0">
-                    <div className="login-5--0">
-                      <div className="login-6--0">
-                        <img
-                          className="login-7--0"
-                          loading="lazy"
-                          alt=""
-                          src="home page.jpg"
-                        />
-                      </div>
-                    </div>
-                  </div> */}
+      <Form
+        noValidate
+        validated={registerValidated}
+        onSubmit={this.handleRegisterSubmit}
+        className="admin-login-3--0"
+      >
         <div className="login-4--1">
           <div className="login-5--01">
             <h1 className="welcome-back">Admin Register</h1>
@@ -159,92 +226,108 @@ export default class AdminLogin extends Component {
         </div>
         <div className="login-4--2">
           <div className="login-5--02">
-            {this.renderInputField("ID", "text", this.handleInputChange, registerId, "Employee ID")}
+            <Form.Control
+              placeholder="Employee Id"
+              className="login-7--12"
+              type="text"
+              required
+              onChange={this.handleRegisterInputChange}
+              value={empId}
+              name="empId"
+            />
           </div>
         </div>
         <div className="login-4--2">
           <div className="login-5--02">
-            {this.renderInputField(
-              "Contact No",
-              "text",
-              this.handleInputChange,
-              contactNo,
-              "Contact No"
-            )}
+            <Form.Control
+              placeholder="First Name"
+              className="login-7--12"
+              type="text"
+              required
+              onChange={this.handleRegisterInputChange}
+              value={firstName}
+              name="firstName"
+            />
           </div>
         </div>
         <div className="login-4--2">
           <div className="login-5--02">
-            {this.renderInputField("NIC", "text", this.handleInputChange, nic, "NIC")}
+            <Form.Control
+              placeholder="Last Name"
+              className="login-7--12"
+              type="text"
+              required
+              onChange={this.handleRegisterInputChange}
+              value={lastName}
+              name="lastName"
+            />
+          </div>
+        </div>
+        <div className="login-4--2">
+          <div className="login-5--02">
+            <Form.Control
+              placeholder="Email"
+              className="login-7--12"
+              type="email"
+              required
+              onChange={this.handleRegisterInputChange}
+              value={registerEmail}
+              name="registerEmail"
+            />
+          </div>
+        </div>
+        <div className="login-4--2">
+          <div className="login-5--02">
+            <Form.Control
+              placeholder="Contact Number"
+              className="login-7--12"
+              type="number"
+              required
+              onChange={this.handleRegisterInputChange}
+              value={contactNumber}
+              name="contactNumber"
+            />
           </div>
         </div>
         <div className="login-4--3">
           <div className="login-5--03">
-            {this.renderInputField(
-              "Password",
-              "password",
-              this.handleInputChange,
-              registerPassword,
-              "Password"
-            )}
+            <Form.Control
+              placeholder="Password"
+              className="login-7--12"
+              type="password"
+              required
+              onChange={this.handleRegisterInputChange}
+              value={registerPassword}
+              name="registerPassword"
+            />
           </div>
         </div>
-        {/* <div className="login-4--4">
-                    <div className="login-5--04">
-                      <div className="forgot-password">Forgot Password?</div>
-                    </div>
-                  </div> */}
         <div className="login-4--5">
-          {/* <div className="login-5--05">
-                      <div className="login-6--03">
-                        <div className="login-7--03">
-                          <b className="log-in">Log in</b>
-                        </div>
-                      </div>
-                    </div> */}
           <Button
             variant="outline-success"
             style={{ width: "100%" }}
-            onClick={this.handleSubmit}
+            type="submit"
           >
             Register
           </Button>{" "}
         </div>
-        {/* <div className="login-4--6">
-          <div className="login-5--06">
-            <div className="new-customer-register">Register</div>
-          </div>
-        </div> */}
-      </form>
+      </Form>
     );
   };
 
   render() {
-    const { validated, registeralidated } = this.state;
     return (
       <div className="admin-login">
         <main className="admin-login-0--0">
           <section className="login-1--0">
             <div className="login-2--1">
-              <Form
-                noValidate
-                validated={validated}
-                onSubmit={this.handleSubmit}
-              >
-                {this.renderRegister()}
-              </Form>
-              <div className="admin-login-con-2--2">
-                <Form
-                  noValidate
-                  validated={registeralidated}
-                  onSubmit={this.handleSubmit}
-                >
-                  {this.renderLogin()}
-                </Form>
-              </div>
+              {this.renderRegister()}
+              <div style={{ marginLeft: "40px" }}></div>
+              {this.renderLogin()}
             </div>
           </section>
         </main>
+        <ToastContainer />
       </div>
     );
   }
