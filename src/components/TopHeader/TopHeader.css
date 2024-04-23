@@ -1,0 +1,123 @@
+.summer-sale-for {
+    position: relative;
+    line-height: 21px;
+  }
+  .summer-sale-for-all-swim-suits-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 3px 0 0;
+    box-sizing: border-box;
+    max-width: 100%;
+  }
+  .shopnow {
+    width: 68px;
+    position: relative;
+    text-decoration: underline;
+    line-height: 24px;
+    font-weight: 600;
+    text-align: center;
+    display: inline-block;
+    min-width: 68px;
+  }
+  .frame-parent2 {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 8px;
+    max-width: 100%;
+  }
+  .english {
+    position: relative;
+    line-height: 21px;
+    display: inline-block;
+    min-width: 49px;
+  }
+  .english-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 1.5px 0 0;
+  }
+  .dropdown-icon {
+    height: 24px;
+    width: 24px;
+    position: relative;
+    overflow: hidden;
+    flex-shrink: 0;
+    min-height: 24px;
+  }
+  .frame-parent1,
+  .frame-parent3,
+  .top-header {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+  }
+  .frame-parent3 {
+    height: 24px;
+    justify-content: flex-start;
+    gap: 5px;
+  }
+  .frame-parent1,
+  .top-header {
+    max-width: 100%;
+  }
+  .frame-parent1 {
+    width: 859px;
+    justify-content: space-between;
+    gap: 20px;
+  }
+  .top-header {
+    align-self: stretch;
+    background-color: #0b2f00;
+    overflow: hidden;
+    justify-content: flex-end;
+    padding: 12px 136px 23px;
+    box-sizing: border-box;
+    text-align: left;
+    font-size: 14px;
+    color: #fafafa;
+    font-family: Poppins;
+  }
+  @media screen and (max-width: 1200px) {
+    .top-header {
+      padding-left: 68px;
+      padding-right: 68px;
+      box-sizing: border-box;
+    }
+  }
+  @media screen and (max-width: 1125px) {
+    .summer-sale-for-all-swim-suits-wrapper {
+      display: none;
+    }
+  }
+  @media screen and (max-width: 800px) {
+    .top-header {
+      padding-left: 34px;
+      padding-right: 34px;
+      box-sizing: border-box;
+    }
+  }
+  @media screen and (max-width: 450px) {
+    .summer-sale-for {
+      display: none;
+    }
+  }
+  /* Styling the select element */
+.dropdown-icon {
+  padding-right: 30px; /* Add padding on the right side for the icon */
+  border: 1px solid #ccc; /* Add a border for better visibility */
+  border-radius: 5px; /* Add border radius for rounded corners */
+  padding: 5px 10px; /* Add padding inside the select element */
+  font-size: 16px; /* Set the font size */
+  cursor: pointer; /* Change cursor to pointer on hover */
+}
+
+/* Styling the options */
+.dropdown-icon option {
+  padding: 5px 10px; /* Add padding inside each option */
+}
