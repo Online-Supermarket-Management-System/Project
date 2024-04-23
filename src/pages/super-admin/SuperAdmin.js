@@ -23,7 +23,7 @@ const SuperAdmin = () => {
       const role = localStorage.getItem("role");
       console.log("role:", role);
 
-      if (role === "SADMIN") {
+      if (role === "SADMIN" ) {
         console.log("User is a super admin");
       } else {
         if (role === "ADMIN") {
