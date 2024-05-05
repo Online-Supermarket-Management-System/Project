@@ -7,7 +7,7 @@ import Button from "react-bootstrap/Button";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-// import userImg from "../../Icons/user.png";
+import userImg from "../../Icons/user.png";
 
 import { getCustomer, update, deleteAcc } from "../../api/customer";
 
@@ -203,7 +203,7 @@ const CustomerProfile = () => {
                   <div className="div7">
                     <div className="div8">
                       <div className="div9">
-                        {/* <b className="b1">Your Profile</b> */}
+                        <b className="b1">Your Profile</b>
                       </div>
                     </div>
                   </div>
@@ -212,7 +212,7 @@ const CustomerProfile = () => {
                   <div className="div11">
                     <div className="div12">
                       <div className="div13">
-                        {/* <img className="icon" alt="" src={userImg} /> */}
+                        <img className="icon" alt="" src={userImg} />
                       </div>
                       <div className="div14">
                         <div className="div15">

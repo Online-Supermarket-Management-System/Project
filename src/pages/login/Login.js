@@ -64,7 +64,7 @@ const Login = () => {
     return (
       <div className="login-6--01">
         <div className="login-7--01">
-          <div className="email">Email</div>
+          <div className="email">{label}</div>
         </div>
         <Form.Control
           placeholder={label}
