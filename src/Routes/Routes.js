@@ -8,6 +8,7 @@ import AdminProfile from "../pages/admin-profile/AdminProfile"
 import SuperAdmin from "../pages/super-admin/SuperAdmin"
 import PastPurchace from "../pages/past-purchace/PastPurchace"
 import Help from "../pages/specialFunction/Help"
+import Admin from "../pages/Admin-page/AdminPage"
 
 const routes = {
     data: [
@@ -70,7 +71,13 @@ const routes = {
             path: "/help",
             component: <Help />,
             type: "",
-         }
+         },
+         {
+         name: "Admin",
+         path: "/admin",
+         component: <Admin />,
+         type: "",
+      }
     ]
 }
 

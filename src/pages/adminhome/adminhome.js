@@ -12,6 +12,7 @@ function AdminHomePage() {
     {label: "Delivery admin", href: "/"},
     {label: "Order management admin", href: "/"},
     {label: "Financial admin", href: "/"},
+    {label: "Admin", href: "/admin"},
   ];
 
   const [selectedCategory, setSelectedCategory] = useState(null);
