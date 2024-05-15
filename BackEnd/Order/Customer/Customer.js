@@ -4,6 +4,7 @@ const bcrypt = require("bcrypt");
 const nodemailer = require('nodemailer');
 const crypto = require('crypto');
 const ordermodel = require('./CustomerModel');
+const productModel = require('../Product/ProductModel');
 
 const create = async (req, res) => {
   try {
@@ -140,11 +141,11 @@ const login = async (req, res) => {
         .status(404)
         .json({ success: false, message: "User not found" });
     }
-    if (!user.isVerified) {
-      return res
-        .status(401)
-        .json({ success: false, message: "Please verify your email first" });
-    }
+    // if (!user.isVerified) {
+    //   return res
+    //     .status(401)
+    //     .json({ success: false, message: "Please verify your email first" });
+    // }
     const isPasswordValid = await bcrypt.compare(password, user.password);
 
     if (!isPasswordValid) {
@@ -161,6 +162,34 @@ const login = async (req, res) => {
     res.status(500).json({ success: false, message: error });
   }
 };
+const addToCart = async (req, res) => {
+  try {
+    const { productId, quantity } = req.body;
+
+    // Check if productId is provided
+    if (!productId) {
+      return res.status(400).json({ error: "Product ID is required" });
+    }
+
+    // Find the product by productId
+    const product = await productModel.findById(productId);
+    if (!product) {
+      return res.status(404).json({ error: "Product not found" });
+    }
+
+    // Update the user's cart with the product
+    const user = await ordermodel.findOneAndUpdate(
+      { email: req.params.email },
+      { $push: { cart: { product: productId, quantity } } },
+      { new: true }
+    );
+
+    res.status(200).json({ message: "Product added to cart", user });
+  } catch (error) {
+    console.error("Add to cart error:", error);
+    res.status(500).json({ error: error.message });
+  }
+};
 
 module.exports = {
   create,
@@ -170,5 +199,6 @@ module.exports = {
   getOrder,
   verifyEmail,
   login,
-  getCustomer
+  getCustomer,
+  addToCart
 };

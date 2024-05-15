@@ -6,13 +6,13 @@ import { getUserRole } from "../../api/adminLogin";
 function AdminHomePage() {
   const categories = [
     {label: "Super admin", href: "/superAdmin"},
-    {label: "Product admin", href: "/"},
-    {label: "Inventory admin", href: "/"},
-    {label: "Payment admin", href: "/"},
-    {label: "Delivery admin", href: "/"},
-    {label: "Order management admin", href: "/"},
-    {label: "Financial admin", href: "/"},
-    {label: "Admin", href: "/admin"},
+    {label: "Product admin", href: "/productadmin-home"},
+    {label: "Inventory admin", href: "/product-view"},
+    {label: "Payment admin", href: "/paymentadmin-home"},
+    {label: "Delivery admin", href: "/deliveryadmin-home"},
+    {label: "Order management admin", href: "/orderadmin-home"},
+    {label: "Feedback admin", href: "/feedbackadmin-home"},
+    {label: "Financial admin", href: "/financialadmin-home"},
   ];
 
   const [selectedCategory, setSelectedCategory] = useState(null);

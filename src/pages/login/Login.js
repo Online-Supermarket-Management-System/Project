@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./Login.css";
-
+import axios from 'axios';
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 
@@ -13,44 +13,43 @@ const Login = () => {
 
   const handleSubmit = async (event) => {
     const form = event.currentTarget;
-
+  
     if (form.checkValidity() === false) {
       event.preventDefault();
       event.stopPropagation();
     }
-
+  
     setValidated(true);
-
+  
     const data = {
       email: email,
       password: password,
     };
-
+  
     console.log("data", data);
-
+  
     try {
-      const response = await login(data);
+      const response = await axios.post("http://localhost:4000/login", data); // Change userData to data
       console.log("response", response);
-
-      if (response) {
+  
+      if (response && response.data.success) {
         console.log("Login successful");
-        localStorage.setItem("customerEmail", response.data.email);
-
-        const customer = localStorage.getItem("customerEmail");
-        console.log("cus", customer);
-
-        localStorage.setItem("customerId", response.data._id);
-
-        const customerId = localStorage.getItem("customerId");
-        console.log("cus", customerId);
-
-
-        window.location.href = "/";
+  
+        if (response.data.success) {
+          localStorage.setItem("customerEmail", response.data.email);
+          localStorage.setItem("customerId", response.data._id);
+          window.location.href = "/";
+        } else {
+          // Email needs to be verified, show a message to the user
+          alert("Please verify your email first");
+        }
       }
     } catch (error) {
       console.log("error", error);
     }
   };
+  
+  
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);

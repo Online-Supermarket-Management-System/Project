@@ -9,6 +9,13 @@ const app = express();
 const PORT = process.env.PORT || 4000;
 
 app.use(bodyParser.json());
+const salaryRoutes = require("./Order/Salary/SalaryRoute");
+const productRoutes = require("./Order/Product/ProductRoute");
+const billingRoutes = require("./Order/Billing/BillingRoute");
+const paymentRoutes = require("./Order/Payment/PaymentRoute");
+const orderRoutes = require('./Order/Order/OrderRoute');
+const driverRoutes = require('./Order/Driver/DriverRoute');
+const feedbackRoutes = require('./Order/Feedback/FeedbackRoute');
 
 // Enable CORS for specific origin and allow necessary headers and methods
 app.use(cors({
@@ -24,6 +31,14 @@ app.options('*', cors());
 
 app.use("/auth", require("./Order/admin-auth/userRoutes"));
 app.use("/", require("./Order/Customer/CustomerRoutes"));
+app.use("/salaryRoutes", salaryRoutes)
+app.use("/product", productRoutes);
+app.use("/billing", billingRoutes);
+app.use("/payment", paymentRoutes);
+app.use("/order", orderRoutes);
+app.use('/drivers', driverRoutes);
+app.use('/api/feedback', feedbackRoutes);
+
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);

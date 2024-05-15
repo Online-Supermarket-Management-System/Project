@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./Register.css";
-
+import axios from 'axios';
 import Form from "react-bootstrap/Form";
 import InputField from "../../components/Inputs/InputField";
 import TextArea from "../../components/Inputs/TextArea";
@@ -24,7 +24,7 @@ const RegistrationCopy = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [validated, setValidated] = useState(false);
-  const [ch, setCh] = useState(false);
+  const [agreeTerms, setAgreeTerms] = useState(false);
 
   const handleFirstNameChange = (event) => {
     setFirstName(event.target.value);
@@ -63,39 +63,57 @@ const RegistrationCopy = () => {
   };
 
   const handleCheckboxChange = (event) => {
-    setCh(event.target.checked);
+    setAgreeTerms(event.target.checked);
   };
 
-  const handleSubmit = async(event) => {
+  const handleAgreeTermsChange = () => {
+    setAgreeTerms(!agreeTerms); // Toggle agreeTerms state
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
     const form = event.currentTarget;
 
     if (form.checkValidity() === false) {
-      event.preventDefault();
       event.stopPropagation();
+      setValidated(true);
+      return;
     }
 
     setValidated(true);
 
-    const data = {
+    if (password !== confirmPassword) {
+      toast.error("Passwords do not match");
+      return;
+    }
+
+    if (!agreeTerms) {
+      toast.error("Please agree to the Terms of Use and Privacy Policy");
+      return;
+    }
+
+    const userData = {
       first_name: firstName,
       last_name: lastName,
-      address: address,
+      address,
       postal_code: postalCode,
-      city: city,
+      city,
       contact_number: contactNumber,
-      email: email,
-      password: password,
+      email,
+      password,
+      ch: agreeTerms // Pass agreeTerms instead of ch
     };
 
-    console.log("data", data);
-
     try {
-      const response = await register(data);
-      console.log("response", response);
+      const response = await axios.post("http://localhost:4000/create", userData);
+      console.log("Registration successful:", response.data);
+      toast.success("Registration successful!");
       window.location.href = "/login";
-    } catch (error) { 
-      console.log("error", error);
-      toast.error("Register failed");
+      // Redirect to login page or any other page
+      // You can use React Router for navigation
+    } catch (error) {
+      console.error("Registration failed:", error);
+      toast.error("Registration failed. Please try again.");
     }
   };
 
@@ -263,7 +281,7 @@ const RegistrationCopy = () => {
                     isValid
                     style={{ marginRight: "5px" }}
                     onChange={handleCheckboxChange}
-                    value={ch}
+                    checked={agreeTerms} 
                   />
                   I agree to the Terms of Use and Privacy Policy
                 </div>
